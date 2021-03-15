@@ -1,0 +1,38 @@
+-- General mappings
+require('plugins')
+require('keymappings')
+require('settings')
+require('colorscheme')
+
+-- Plugins
+require('_compe')
+require('_colorizer')
+require('_nvimtree')
+require('_treesitter')
+require('_galaxyline')
+require('_barbar')
+require('_gitsigns')
+require('_nvim-autopairs')
+require('_kommentary')
+--require('quickscope')
+require('_rnvimr')
+require('_startify')
+require('_telescope')
+require('_floaterm')
+require('_vim-rooter')
+require('_lspkind')
+require('_hop')
+require('_rainbow')
+
+-- Which Key (Hope to replace with Lua plugin someday)
+vim.cmd('source ~/.config/nvim/lua/_whichkey/init.vim')
+
+-- LSP
+require('utils')
+require('_lsp')
+require('_lsp.lua-ls')
+require('_lsp.bash-ls')
+require('_lsp.js-ts-ls')
+require('_lsp.clangd-ls')
+require('_lsp.jdtls-ls')
+require('_lsp.omnisharp-ls')
