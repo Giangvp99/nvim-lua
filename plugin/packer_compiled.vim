@@ -40,6 +40,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/bracey.vim"
   },
+  ["completion-nvim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
   firenvim = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/firenvim"
@@ -63,6 +67,18 @@ _G.packer_plugins = {
   kommentary = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
+  ["lsp-status.nvim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
+  },
+  ["lsp_extensions.nvim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim"
+  },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
@@ -92,13 +108,29 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-dap"
+  },
+  ["nvim-dap-virtual-text"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text"
+  },
   ["nvim-lightbulb"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
   },
+  ["nvim-lint"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-lint"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lsputils"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-lsputils"
   },
   ["nvim-lua-guide"] = {
     loaded = true,
@@ -111,6 +143,19 @@ _G.packer_plugins = {
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-treesitter-refactor"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects"
+  },
+  ["nvim-ts-autotag"] = {
+    config = { "\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20nvim-ts-autotag\frequire\0" },
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag"
   },
   ["nvim-ts-rainbow"] = {
     loaded = true,
@@ -136,6 +181,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
+  popfix = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/popfix"
+  },
   ["popup.nvim"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/popup.nvim"
@@ -143,6 +192,10 @@ _G.packer_plugins = {
   rnvimr = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/rnvimr"
+  },
+  ["surround.nvim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/surround.nvim"
   },
   ["tagalong.vim"] = {
     loaded = true,
@@ -155,6 +208,16 @@ _G.packer_plugins = {
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  undotree = {
+    commands = { "UndotreeToggle" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/opt/undotree"
+  },
+  ["vim-autoformat"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-autoformat"
   },
   ["vim-bbye"] = {
     loaded = true,
@@ -196,11 +259,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-which-key"
   },
+  ["vista.vim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vista.vim"
+  },
   ["webapi-vim"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/webapi-vim"
   }
 }
+
+-- Config for: nvim-ts-autotag
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20nvim-ts-autotag\frequire\0", "config", "nvim-ts-autotag")
+
+-- Command lazy-loads
+vim.cmd [[command! -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 
 END
 

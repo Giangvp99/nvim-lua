@@ -21,10 +21,27 @@ return require('packer').startup(function()
   use 'norcalli/nvim_utils'
 
   -- LSP
+  use 'RishabhRD/popfix'
   use 'neovim/nvim-lspconfig'
+  use({
+    "RishabhRD/nvim-lsputils",
+    requires = "RishabhRD/popfix",
+  })
   use 'glepnir/lspsaga.nvim'
   use 'onsails/lspkind-nvim'
-  use 'kosayoda/nvim-lightbulb'
+  use({ "tjdevries/lsp_extensions.nvim" })
+  use({ "nvim-lua/lsp-status.nvim" })
+  use({ "ray-x/lsp_signature.nvim" })
+  use({
+    "kosayoda/nvim-lightbulb",
+  })
+
+  -- Debugging & linting
+  use({
+    "mfussenegger/nvim-lint",
+  })
+  use({ "mfussenegger/nvim-dap" })
+  use({ "theHamsta/nvim-dap-virtual-text" })
 
   --use 'mfussenegger/nvim-jdtls'
 
@@ -32,19 +49,61 @@ return require('packer').startup(function()
   --use 'mfussenegger/nvim-dap'
 
   -- Autocomplete
-  use 'hrsh7th/nvim-compe'
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
+  use({"hrsh7th/nvim-compe"})
+  use 'nvim-lua/completion-nvim'
+
+  -- Snippets
+  use({
+    "hrsh7th/vim-vsnip",
+    requires = { "hrsh7th/vim-vsnip-integ" },
+  })
+
   -- Treesitter
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'nvim-treesitter/playground'
-  use 'p00f/nvim-ts-rainbow'
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  })
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+  use({
+    "nvim-treesitter/nvim-treesitter-refactor",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+  use({
+    "nvim-treesitter/playground",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+  use({
+    "p00f/nvim-ts-rainbow",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+  use({
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  })
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
 
   -- Status Line and Bufferline
-  use 'glepnir/galaxyline.nvim'
+  use({
+    "glepnir/galaxyline.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+  })
+
+  -- Tag viewer
+  use({ "liuchengxu/vista.vim" })
+
+  -- Undotree
+  use({
+    "mbbill/undotree",
+    cmd = "UndotreeToggle",
+  })
+
   -- use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
   use 'romgrk/barbar.nvim'
 
@@ -55,7 +114,10 @@ return require('packer').startup(function()
   use 'nvim-telescope/telescope-media-files.nvim'
 
   -- Explorer
-  use 'kyazdani42/nvim-tree.lua'
+  use({
+    "kyazdani42/nvim-tree.lua",
+    requires = "kyazdani42/nvim-web-devicons",
+  })
 
 
   -- Color
@@ -69,6 +131,10 @@ return require('packer').startup(function()
   -- Easily Create Gists
   --use 'mattn/vim-gist'
   use 'mattn/webapi-vim'
+
+  -- Format
+  --use({"mhartington/formatter.nvim"})
+  use 'Chiel92/vim-autoformat'
 
   -- General Plugins
   use 'windwp/nvim-autopairs'
@@ -90,4 +156,5 @@ return require('packer').startup(function()
   use 'tpope/vim-sleuth'
   use 'voldikss/vim-floaterm'
   use 'phaazon/hop.nvim'
+  use({ "blackCauldron7/surround.nvim" })
 end)

@@ -8,13 +8,14 @@ end
 vim.cmd('set iskeyword+=-')                  --treat dash separated words as a word text object"
 vim.cmd('set shortmess+=c')                 --Don't pass messages to |ins-completion-menu|.
 vim.cmd('set whichwrap+=<,>,[,],h,l')
+vim.cmd('syntax enable')
 
 opt('o', 'hidden', true)                              -- Enable modified buffers in background
 opt('w', 'wrap', false)                               -- Disable line wrap
 opt('o', 'encoding', "utf-8")                      --The encoding displayed
 opt('o', 'pumheight', 10)                        --Makes popup menu smaller
 opt('o', 'fileencoding', "utf-8")                  --The encoding written to file
-opt('o', 'ruler', true)              		  --                " Show the cursor position all the time
+opt('o', 'ruler', true)                   --                " Show the cursor position all the time
 opt('o', 'cmdheight', 2)                         --More space for displaying messages
 opt('o', 'mouse', "a")                             --Enable your mouse
 opt('o', 'splitbelow', true)                          -- Put new windows below current
@@ -41,15 +42,15 @@ opt('o', 'updatetime', 300)                      --Faster completion
 opt('o', 'timeoutlen', 100)                      --By default timeoutlen is 1000 ms
 opt('o', 'incsearch', true)
 
---[[ opt('o', 'completeopt', 'menuone,noinsert,noselect')  -- Completion options (for deoplete)
-opt('o', 'ignorecase', true)                          -- Ignore case
-opt('o', 'joinspaces', false)                         -- No double spaces with join after a dot
+opt('o', 'completeopt', 'menuone,noinsert,noselect')  -- Completion options (for deoplete)
+-- opt('o', 'ignorecase', true)                          -- Ignore case
+-- opt('o', 'joinspaces', false)                         -- No double spaces with join after a dot
 opt('o', 'scrolloff', 4 )                             -- Lines of context
 opt('o', 'shiftround', true)                          -- Round indent
 opt('o', 'sidescrolloff', 8 )                         -- Columns of context
 opt('o', 'smartcase', true)                           -- Don't ignore case with capitals
-opt('o', 'wildmode', 'list:longest')                  -- Command-line completion mode
-opt('w', 'list', true)                                -- Show some invisible characters (tabs...)
+-- opt('o', 'wildmode', 'list:longest')                  -- Command-line completion mode
+-- opt('w', 'list', true)                                -- Show some invisible characters (tabs...)
 opt('w', 'relativenumber', true)                      -- Relative line numbers
-opt('o', 'clipboard', "unnamedplus")               --Copy paste between vim and everything else ]]
-opt('o', 'guifont', "Hack")
+opt('o', 'clipboard', "unnamedplus")               --Copy paste between vim and everything else
+opt('o', 'guifont', "Fira Code")
