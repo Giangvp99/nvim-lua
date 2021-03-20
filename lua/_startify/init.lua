@@ -4,7 +4,7 @@ vim.g.startify_custom_header = {
         '      /  |/ /| | / / /   / __ \\/ __  / _ \\',
         '     / /|  / | |/ / /___/ /_/ / /_/ /  __/',
         '    /_/ |_/  |___/\\____/\\____/\\__,_/\\___/ ',
-        }
+}
 
 vim.g.webdevicons_enable_startify = 1
 vim.g.startify_enable_special = 0

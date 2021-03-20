@@ -13,16 +13,17 @@ require'compe'.setup {
   documentation = true;
 
   source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    vsnip = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = true;
-    snippets_nvim = true;
-    treesitter = true;
+    path = {kind = "  "},
+    buffer = {kind = "  "},
+    calc = {kind = "  "},
+    vsnip = {kind = "  "},
+    nvim_lsp = {kind = "  "},
+    nvim_lua = {kind = "  "},
+    spell = {kind = "  "},
+    tags = false,
+    snippets_nvim = {kind = "  "},
+    treesitter = {kind = "  "},
+    emoji = {kind = " ﲃ "}
   };
 }
 
@@ -35,12 +36,12 @@ local t = function(str)
 end
 
 local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-        return true
-    else
-        return false
-    end
+  local col = vim.fn.col('.') - 1
+  if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+    return true
+  else
+    return false
+  end
 end
 
 -- Use (s-)tab to:

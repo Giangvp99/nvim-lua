@@ -24,12 +24,17 @@ require('_hop')
 require('_rainbow')
 require('_signature')
 require('_autotag')
+--require('_status')
+require('_neogit')
+require('_utils')
+require('_closetag')
 --require('_formatter')
 
 require('_lspkind')
 require('_lspsaga')
 -- Which Key (Hope to replace with Lua plugin someday)
-vim.cmd('source ~/.config/nvim/lua/_whichkey/init.vim')
+vim.cmd('source ~/.config/nvim/vimscript/whichkey.vim')
+vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
 
 -- LSP
 require('utils')

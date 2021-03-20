@@ -50,7 +50,7 @@ return require('packer').startup(function()
 
   -- Autocomplete
   use({"hrsh7th/nvim-compe"})
-  use 'nvim-lua/completion-nvim'
+  --use 'nvim-lua/completion-nvim'
 
   -- Snippets
   use({

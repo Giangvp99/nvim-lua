@@ -40,10 +40,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/bracey.vim"
   },
-  ["completion-nvim"] = {
-    loaded = true,
-    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/completion-nvim"
-  },
   firenvim = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/firenvim"
