@@ -37,16 +37,32 @@ let g:which_key_map['z'] = [ 'Goyo'                                            ,
 let g:which_key_map[' '] = [ '<Esc>'                                           , 'ignore']
 " Group mappings
 
+" , is for emmet
+let g:which_key_map[','] = {
+      \ 'name' : '+emmet' ,
+      \ ',' : ['<Plug>(emmet-expand-abbr)'               , 'expand abbr'],
+      \ ';' : ['<plug>(emmet-expand-word)'               , 'expand word'],
+      \ 'u' : ['<plug>(emmet-update-tag)'                , 'update tag'],
+      \ 'd' : ['<plug>(emmet-balance-tag-inward)'        , 'balance tag in'],
+      \ 'D' : ['<plug>(emmet-balance-tag-outward)'       , 'balance tag out'],
+      \ 'n' : ['<plug>(emmet-move-next)'                 , 'move next'],
+      \ 'N' : ['<plug>(emmet-move-prev)'                 , 'move prev'],
+      \ 'i' : ['<plug>(emmet-image-size)'                , 'image size'],
+      \ '/' : ['<plug>(emmet-toggle-comment)'            , 'toggle comment'],
+      \ 'j' : ['<plug>(emmet-split-join-tag)'            , 'split join tag'],
+      \ 'k' : ['<plug>(emmet-remove-tag)'                , 'remove tag'],
+      \ 'a' : ['<plug>(emmet-anchorize-url)'             , 'anchorize url'],
+      \ 'A' : ['<plug>(emmet-anchorize-summary)'         , 'anchorize summary'],
+      \ 'm' : ['<plug>(emmet-merge-lines)'               , 'merge lines'],
+      \ 'c' : ['<plug>(emmet-code-pretty)'               , 'code pretty'],
+      \ }
+
 " a is for actions
 let g:which_key_map.a = {
                   \ 'name' : '+actions' ,
                   \ 'c' : [':ColorizerToggle'        , 'colorizer'],
                   \ 'e' : [':CocCommand explorer'    , 'explorer'],
                   \ 'h' : [':let @/ = ""'            , 'remove search highlight'],
-                  \ 'l' : [':Bracey'                 , 'start live server'],
-                  \ 'L' : [':BraceyStop'             , 'stop live server'],
-                  \ 'm' : [':MarkdownPreview'        , 'markdown preview'],
-                  \ 'M' : [':MarkdownPreviewStop'    , 'markdown preview stop'],
                   \ 'n' : [':set nonumber!'          , 'line-numbers'],
                   \ 's' : [':s/\%V\(.*\)\%V/"\1"/'   , 'surround'],
                   \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
@@ -65,7 +81,6 @@ let g:which_key_map.b = {
       \ 'b' : [':BufferPick'            , 'pick buffer'],
       \ 'd' : [':BufferDelete'          , 'delete-buffer'],
       \ 'c' : [':BufferClose'           , 'close-buffer'],
-      \ '?' : ['Buffers'                , 'fzf-buffer'],
       \ }
 
 " d is for debug
@@ -123,7 +138,6 @@ let g:which_key_map.s = {
                   \ 'i' : [':Telescope media_files'                 , 'media files'],
                   \ 'k' : [':Telescope keymaps'                     , 'keymaps'],
                   \ 'l' : [':Telescope loclist'                     , 'loclist'],
-                  \ 'm' : [':Telescope marks'                       , 'marks'],
                   \ 'M' : [':Telescope man_pages'                   , 'man_pages'],
                   \ 'o' : [':Telescope vim_options'                 , 'vim_options'],
                   \ 'O' : [':Telescope oldfiles'                    , 'oldfiles'],
@@ -153,37 +167,24 @@ let g:which_key_map.S = {
                   \ }
 
 " g is for git
-" let g:which_key_map.g = {
-"       \ 'name' : '+git' ,
-"       \ 'a' : [':Git add .'                        , 'add all'],
-"       \ 'A' : [':CocCommand fzf-preview.GitStatus' , 'actions'],
-"       \ 'b' : [':Git blame'                        , 'blame'],
-"       \ 'B' : [':GBrowse'                          , 'browse'],
-"       \ 'c' : [':Git commit'                       , 'commit'],
-"       \ 'd' : [':Git diff'                         , 'diff'],
-"       \ 'D' : [':Gdiffsplit'                       , 'diff split'],
-"       \ 'g' : [':GGrep'                            , 'git grep'],
-"       \ 'G' : [':Gstatus'                          , 'status'],
-"       \ 'h' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
-"       \ 'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
-"       \ 'i' : [':Gist -b'                          , 'post gist'],
-"       \ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
-"       \ 'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
-"       \ 'l' : [':Git log'                          , 'log'],
-"       \ 'm' : ['<Plug>(git-messenger)'             , 'message'],
-"       \ 'p' : [':Git push'                         , 'push'],
-"       \ 'P' : [':Git pull'                         , 'pull'],
-"       \ 'r' : [':GRemove'                          , 'remove'],
-"       \ 's' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
-"       \ 'S' : [':CocCommand fzf-preview.GitStatus' , 'status'],
-"       \ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
-"       \ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
-"       \ 'v' : [':GV'                               , 'view commits'],
-"       \ 'V' : [':GV!'                              , 'view buffer commits'],
-"       \ }
-" \ 'A' : [':Git add %'                        , 'add current'],
-" \ 'S' : [':!git status'                      , 'status'],
+let g:which_key_map.g = {
+      \ 'name' : '+git' ,
+      \ 'b' : [':GitBlameToggle'                   , 'blame'],
+      \ 'B' : [':GBrowse'                          , 'browse'],
+      \ 'd' : [':Git diff'                         , 'diff'],
+      \ 'j' : [':NextHunk'                         , 'next hunk'],
+      \ 'k' : [':PrevHunk'                         , 'prev hunk'],
+      \ 'l' : [':Git log'                          , 'log'],
+      \ 'n' : [':Neogit'                           , 'neogit'],
+      \ 'p' : [':PreviewHunk'                      , 'preview hunk'],
+      \ 'r' : [':ResetHunk'                        , 'reset hunk'],
+      \ 'R' : [':ResetBuffer'                      , 'reset buffer'],
+      \ 's' : [':StageHunk'                        , 'stage hunk'],
+      \ 'S' : [':Gstatus'                          , 'status'],
+      \ 'u' : [':UndoStageHunk'                    , 'undo stage hunk'],
+      \ }
 
+" G is for Gist
 " let g:which_key_map.G = {
 "       \ 'name' : '+gist' ,
 "       \ 'a' : [':Gist -a'                          , 'post gist anon'],
@@ -237,5 +238,12 @@ let g:which_key_map.t = {
                   \ 'u' : [':FloatermNew ncdu'                              , 'ncdu'],
                   \ ' ' : ['<Esc>'                                          , 'ignore']
                   \ }
+
+" R is for find and replace
+let g:which_key_map.R = {
+      \ 'name' : '+Find_Replace' ,
+      \ 'f' : [':Farr --source=vimgrep'    , 'file'],
+      \ 'p' : [':Farr --source=rgnvim'     , 'project'],
+      \ }
 
 call which_key#register('<Space>', "g:which_key_map")

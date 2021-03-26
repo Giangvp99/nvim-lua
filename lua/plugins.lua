@@ -9,8 +9,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'  -- Auto compile when there are changes in plugins.lua
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim'}
 
@@ -32,25 +33,18 @@ return require('packer').startup(function()
   use({ "tjdevries/lsp_extensions.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
   use({ "ray-x/lsp_signature.nvim" })
-  use({
-    "kosayoda/nvim-lightbulb",
-  })
+  use({ "kosayoda/nvim-lightbulb"})
+  use 'kabouzeid/nvim-lspinstall'
+  use 'mfussenegger/nvim-jdtls'
 
   -- Debugging & linting
-  use({
-    "mfussenegger/nvim-lint",
-  })
+  use({ "mfussenegger/nvim-lint"})
   use({ "mfussenegger/nvim-dap" })
   use({ "theHamsta/nvim-dap-virtual-text" })
 
-  --use 'mfussenegger/nvim-jdtls'
-
-  -- Debugging
-  --use 'mfussenegger/nvim-dap'
-
   -- Autocomplete
   use({"hrsh7th/nvim-compe"})
-  --use 'nvim-lua/completion-nvim'
+  use 'mattn/emmet-vim'
 
   -- Snippets
   use({
@@ -94,6 +88,7 @@ return require('packer').startup(function()
     "glepnir/galaxyline.nvim",
     requires = "kyazdani42/nvim-web-devicons",
   })
+  use 'romgrk/barbar.nvim'
 
   -- Tag viewer
   use({ "liuchengxu/vista.vim" })
@@ -104,10 +99,9 @@ return require('packer').startup(function()
     cmd = "UndotreeToggle",
   })
 
-  -- use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
-  use 'romgrk/barbar.nvim'
+  -- Find and replace
+  use 'brooth/far.vim'
 
-  -- Telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
@@ -119,18 +113,16 @@ return require('packer').startup(function()
     requires = "kyazdani42/nvim-web-devicons",
   })
 
-
   -- Color
-  --use 'christianchiarulli/nvcode-color-schemes.vim'
+  use 'christianchiarulli/nvcode-color-schemes.vim'
   use 'norcalli/nvim-colorizer.lua'
 
   -- Git
   use 'TimUntersberger/neogit'
   use {'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use 'f-person/git-blame.nvim'
-  -- Easily Create Gists
-  --use 'mattn/vim-gist'
   use 'mattn/webapi-vim'
+  use 'tpope/vim-fugitive'
 
   -- Format
   --use({"mhartington/formatter.nvim"})
@@ -139,7 +131,7 @@ return require('packer').startup(function()
   -- General Plugins
   use 'windwp/nvim-autopairs'
   use 'kevinhwang91/nvim-bqf'
-  --use 'unblevable/quick-scope'
+  use 'unblevable/quick-scope'
   use 'airblade/vim-rooter'
   use 'b3nj5m1n/kommentary'
   use 'kevinhwang91/rnvimr'
@@ -155,6 +147,7 @@ return require('packer').startup(function()
   use 'liuchengxu/vim-which-key'
   use 'tpope/vim-sleuth'
   use 'voldikss/vim-floaterm'
+  use 'terrortylor/nvim-comment'
   use 'phaazon/hop.nvim'
   use({ "blackCauldron7/surround.nvim" })
 end)

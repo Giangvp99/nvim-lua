@@ -40,6 +40,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/bracey.vim"
   },
+  ["emmet-vim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/emmet-vim"
+  },
   firenvim = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/firenvim"
@@ -88,6 +92,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/neogit"
   },
+  ["nvcode-color-schemes.vim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
@@ -99,6 +107,10 @@ _G.packer_plugins = {
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+  },
+  ["nvim-comment"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-comment"
   },
   ["nvim-compe"] = {
     loaded = true,
@@ -112,6 +124,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text"
   },
+  ["nvim-jdtls"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-jdtls"
+  },
   ["nvim-lightbulb"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
@@ -123,6 +139,10 @@ _G.packer_plugins = {
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-lsputils"] = {
     loaded = true,
@@ -185,6 +205,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  ["quick-scope"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/quick-scope"
+  },
   rnvimr = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/rnvimr"
@@ -226,6 +250,10 @@ _G.packer_plugins = {
   ["vim-floaterm"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-floaterm"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
   ["vim-rooter"] = {
     loaded = true,

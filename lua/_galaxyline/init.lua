@@ -274,14 +274,14 @@ gls.left[11] = {
             --     highlight = {colors.bright_green, colors.bg1},
             --   }
             -- }
-            gls.right[3] = {
+            gls.right[1] = {
               DiagnosticWarn = {
                 provider = 'DiagnosticWarn',
                 icon = '  ',
                 highlight = {colors.bright_yellow, colors.bg1},
               }
             }
-            gls.right[4] = {
+            gls.right[2] = {
               DiagnosticError = {
                 provider = 'DiagnosticError',
                 icon = '  ',
