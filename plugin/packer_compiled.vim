@@ -40,9 +40,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/bracey.vim"
   },
+  ["completion-nvim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
   ["emmet-vim"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/emmet-vim"
+  },
+  ["far.vim"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/far.vim"
   },
   firenvim = {
     loaded = true,
@@ -71,10 +79,6 @@ _G.packer_plugins = {
   ["lsp-status.nvim"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
-  },
-  ["lsp_extensions.nvim"] = {
-    loaded = true,
-    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim"
   },
   ["lsp_signature.nvim"] = {
     loaded = true,
@@ -111,10 +115,6 @@ _G.packer_plugins = {
   ["nvim-comment"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-comment"
-  },
-  ["nvim-compe"] = {
-    loaded = true,
-    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-dap"] = {
     loaded = true,
@@ -234,10 +234,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/opt/undotree"
-  },
-  ["vim-autoformat"] = {
-    loaded = true,
-    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-autoformat"
   },
   ["vim-bbye"] = {
     loaded = true,

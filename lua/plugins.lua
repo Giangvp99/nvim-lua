@@ -3,7 +3,6 @@ local fn = vim.fn
 
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
-
 if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
   execute 'packadd packer.nvim'
@@ -18,20 +17,19 @@ return require('packer').startup(function(use)
   -- Information
   use 'nanotee/nvim-lua-guide'
 
-  -- Quality of life improvements
-  use 'norcalli/nvim_utils'
+  -- Quality of life improvements 
+  use 'norcalli/nvim_utils' --xxx
 
   -- LSP
-  use 'RishabhRD/popfix'
+  use 'RishabhRD/popfix' --xxx
   use 'neovim/nvim-lspconfig'
-  use({
+  use({                           --xxx
     "RishabhRD/nvim-lsputils",
     requires = "RishabhRD/popfix",
   })
-  use 'glepnir/lspsaga.nvim'
+  use 'glepnir/lspsaga.nvim' --xxx
   use 'onsails/lspkind-nvim'
-  use({ "tjdevries/lsp_extensions.nvim" })
-  use({ "nvim-lua/lsp-status.nvim" })
+  use({ "nvim-lua/lsp-status.nvim" }) --xx
   use({ "ray-x/lsp_signature.nvim" })
   use({ "kosayoda/nvim-lightbulb"})
   use 'kabouzeid/nvim-lspinstall'
@@ -43,11 +41,12 @@ return require('packer').startup(function(use)
   use({ "theHamsta/nvim-dap-virtual-text" })
 
   -- Autocomplete
-  use({"hrsh7th/nvim-compe"})
+  use 'nvim-lua/completion-nvim'
+  --use 'hrsh7th/nvim-compe'
   use 'mattn/emmet-vim'
 
   -- Snippets
-  use({
+  use({                   --xx
     "hrsh7th/vim-vsnip",
     requires = { "hrsh7th/vim-vsnip-integ" },
   })
@@ -89,6 +88,7 @@ return require('packer').startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
   })
   use 'romgrk/barbar.nvim'
+  use 'moll/vim-bbye'
 
   -- Tag viewer
   use({ "liuchengxu/vista.vim" })
@@ -113,7 +113,7 @@ return require('packer').startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
   })
 
-  -- Color
+  -- Color && themes
   use 'christianchiarulli/nvcode-color-schemes.vim'
   use 'norcalli/nvim-colorizer.lua'
 
@@ -126,28 +126,34 @@ return require('packer').startup(function(use)
 
   -- Format
   --use({"mhartington/formatter.nvim"})
-  use 'Chiel92/vim-autoformat'
+  
+  -- Comment
+  use 'b3nj5m1n/kommentary'
+  
+  -- Ranger
+  use 'kevinhwang91/rnvimr'
+  
+  -- Start vim
+  use 'mhinz/vim-startify'
+
+  -- Which key
+  use 'liuchengxu/vim-which-key'
+  
+  -- Floaterm
+  use 'voldikss/vim-floaterm'
 
   -- General Plugins
   use 'windwp/nvim-autopairs'
   use 'kevinhwang91/nvim-bqf'
   use 'unblevable/quick-scope'
   use 'airblade/vim-rooter'
-  use 'b3nj5m1n/kommentary'
-  use 'kevinhwang91/rnvimr'
-  use 'mhinz/vim-startify'
-  --use 'metakirby5/codi.vim'
   use 'psliwka/vim-smoothie'
-  --use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
-  use 'moll/vim-bbye'
   use 'turbio/bracey.vim'
   use 'AndrewRadev/tagalong.vim'
-  use 'alvan/vim-closetag'
-  use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](1) end }
-  use 'liuchengxu/vim-which-key'
   use 'tpope/vim-sleuth'
-  use 'voldikss/vim-floaterm'
-  use 'terrortylor/nvim-comment'
   use 'phaazon/hop.nvim'
-  use({ "blackCauldron7/surround.nvim" })
+  use "blackCauldron7/surround.nvim"
+  --use 'metakirby5/codi.vim'
+  --use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
+  --use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](1) end }
 end)
