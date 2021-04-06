@@ -8,6 +8,4 @@ local lsp_status = require('lsp-status')
 -- Register the progress handler
 lsp_status.register_progress()
 
-lsp_status.config{
-  current_function = true
-}
+lsp_status.config {current_function = true}

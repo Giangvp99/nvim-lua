@@ -1,12 +1,14 @@
 -- General mappings
 require('plugins')
+require('globals')
 require('keymappings')
 require('settings')
-  require('colorscheme')
+require('colorscheme')
+vim.cmd('luafile ~/.config/nvim/settings.lua')
 
 -- Plugins
--- require('_compe')
-require('_completion-nvim')
+require('_compe')
+require('_autocommands')
 require('_colorizer')
 require('_nvimtree')
 require('_treesitter')
@@ -23,7 +25,6 @@ require('_floaterm')
 require('_vim-rooter')
 require('_hop')
 require('_rainbow')
-require('_signature')
 require('_autotag')
 require('_neogit')
 require('_utils')
@@ -39,6 +40,7 @@ vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
 -- LSP
 require('_lspkind')
 require('_lspsaga')
+require('_signature')
 
 require('_lsp')
 require('_lsp.lua-ls')

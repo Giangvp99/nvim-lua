@@ -1,3 +1,1 @@
-require('nvim-ts-autotag').setup({
-  filetypes = { "html" , "xml" },
-})
+require('nvim-ts-autotag').setup({filetypes = {"html", "xml"}})

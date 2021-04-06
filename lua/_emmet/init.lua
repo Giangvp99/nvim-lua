@@ -1,7 +1,7 @@
 -- After you have what you want press C-e and , at the same time
 -- autocmd FileType html,css EmmetInstall
 -- vim.g.user_emmet_leader_key='<leader>'
-vim.g.user_emmet_mode='inv'
+vim.g.user_emmet_mode = 'inv'
 vim.g.user_emmet_expandabbr_key = '<C-e>,'
 vim.g.user_emmet_expandword_key = '<C-e>;'
 vim.g.user_emmet_update_tag = '<C-e>u'

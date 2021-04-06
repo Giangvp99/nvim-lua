@@ -40,9 +40,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/bracey.vim"
   },
-  ["completion-nvim"] = {
+  ["codi.vim"] = {
     loaded = true,
-    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/completion-nvim"
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/codi.vim"
   },
   ["emmet-vim"] = {
     loaded = true,
@@ -52,9 +52,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/far.vim"
   },
-  firenvim = {
+  ["friendly-snippets"] = {
     loaded = true,
-    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/firenvim"
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/friendly-snippets"
   },
   ["galaxyline.nvim"] = {
     loaded = true,
@@ -112,9 +112,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
-  ["nvim-comment"] = {
+  ["nvim-compe"] = {
     loaded = true,
-    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-comment"
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-dap"] = {
     loaded = true,
@@ -239,10 +239,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-bbye"
   },
-  ["vim-closetag"] = {
-    loaded = true,
-    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-closetag"
-  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-floaterm"
@@ -266,6 +262,10 @@ _G.packer_plugins = {
   ["vim-startify"] = {
     loaded = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-startify"
+  },
+  ["vim-visual-multi"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/vim-visual-multi"
   },
   ["vim-vsnip"] = {
     loaded = true,

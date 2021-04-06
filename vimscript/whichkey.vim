@@ -208,6 +208,7 @@ let g:which_key_map.l = {
                   \ 'f' : [':LspFormatting'                      , 'format'],
                   \ 'H' : [':Lspsaga signature_help'             , 'signature_help'],
                   \ 'I' : [':LspInfo'                            , 'lsp_info'],
+                  \ 'P' : [':LspStop'                            , 'lsp_stop_all'],
                   \ 'l' : [':Lspsaga lsp_finder'                 , 'lsp_finder'],
                   \ 'L' : [':Lspsaga show_line_diagnostics'      , 'line_diagnostics'],
                   \ 'o' : [':Vista!!'                            , 'outline'],

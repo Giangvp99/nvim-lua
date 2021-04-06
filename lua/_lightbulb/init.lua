@@ -4,7 +4,7 @@ require'nvim-lightbulb'.update_lightbulb {
     sign = {
         enabled = true,
         -- Priority of the gutter sign
-        priority = 10,
+        priority = 10
     },
     float = {
         enabled = false,
@@ -24,16 +24,16 @@ require'nvim-lightbulb'.update_lightbulb {
         -- - offset_y   y-axis offset of the floating window
         -- - anchor     corner of float to place at the cursor (NW, NE, SW, SE)
         -- - winblend   transparency of the window (0-100)
-        win_opts = {},
+        win_opts = {}
     },
     virtual_text = {
         enabled = false,
         -- Text to show at virtual text
-        text = "💡",
+        text = "💡"
     }
 }
 
-vim.fn.sign_define('LightBulbSign', { text = "", texthl = "", linehl="", numhl="" })
+vim.fn.sign_define('LightBulbSign', {text = "", texthl = "", linehl = "", numhl = ""})
 
 vim.api.nvim_command('highlight LightBulbFloatWin ctermfg= ctermbg= guifg= guibg=')
 vim.api.nvim_command('highlight LightBulbVirtualText ctermfg= ctermbg= guifg= guibg=')
