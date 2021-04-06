@@ -23,10 +23,8 @@ function nv_utils.define_augroups(definitions) -- {{{1
 end
 nv_utils.define_augroups({
     _general_settings = {
-        {
-            'TextYankPost', '*',
-            'lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})'
-        }, {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
+        {'TextYankPost', '*', 'lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})'},
+        {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'FileType', 'java', 'luafile ~/.config/nvim/lua/lsp/java-ls.lua'},
@@ -197,8 +195,13 @@ end
 
 -- misc
 function nv_utils.file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
+    local f = io.open(name, "r")
+    if f ~= nil then
+        io.close(f)
+        return true
+    else
+        return false
+    end
 end
 
 -- autoformat
