@@ -23,9 +23,6 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 " Single mappings
-" let g:which_key_map['/'] = [ ':call Comment()'                                 , 'comment' ]
-" let g:which_key_map['/'] = { 'name' : 'comment' }
-let g:which_key_map['/'] = 'which_key_ignore'
 let g:which_key_map['?'] = [ ':NvimTreeFindFile'                               , 'find current file' ]
 let g:which_key_map['e'] = [ ':NvimTreeToggle'                                 , 'explorer' ]
 let g:which_key_map['h'] = [ '<C-W>s'                                          , 'split below']
@@ -35,6 +32,8 @@ let g:which_key_map['T'] = [ ':TSHighlightCapturesUnderCursor'                 ,
 let g:which_key_map['v'] = [ '<C-W>v'                                          , 'split right']
 let g:which_key_map['z'] = [ 'Goyo'                                            , 'zen' ]
 let g:which_key_map[' '] = [ '<Esc>'                                           , 'ignore']
+
+
 " Group mappings
 
 " , is for emmet
@@ -55,6 +54,7 @@ let g:which_key_map[','] = {
       \ 'A' : ['<plug>(emmet-anchorize-summary)'         , 'anchorize summary'],
       \ 'm' : ['<plug>(emmet-merge-lines)'               , 'merge lines'],
       \ 'c' : ['<plug>(emmet-code-pretty)'               , 'code pretty'],
+      \ ' ' : ['<Esc>'                                   , 'ignore']
       \ }
 
 " a is for actions
@@ -81,6 +81,7 @@ let g:which_key_map.b = {
       \ 'b' : [':BufferPick'            , 'pick buffer'],
       \ 'd' : [':BufferDelete'          , 'delete-buffer'],
       \ 'c' : [':BufferClose'           , 'close-buffer'],
+      \ ' ' : ['<Esc>'                  , 'ignore']
       \ }
 
 " d is for debug
