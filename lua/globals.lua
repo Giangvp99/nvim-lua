@@ -17,16 +17,15 @@ O = {
         rainbow = {enabled = false}
     },
 
-    database = {save_location = '~/.config/nvcode_db', auto_execute = 1},
     python = {
         linter = '',
         -- @usage can be 'yapf', 'black'
         formatter = '',
         autoformat = false,
         isort = false,
-        diagnostics = {virtual_text = true, signs = true, underline = true}
+        diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true},
+        analysis = {type_checking = "basic", auto_search_paths = true, use_library_code_types = true}
     },
-    dart = {sdk_path = '/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot'},
     lua = {
         -- @usage can be 'lua-format'
         formatter = '',
@@ -43,9 +42,9 @@ O = {
     },
     tsserver = {
         -- @usage can be 'eslint'
-        linter = '',
+        linter = 'eslint',
         -- @usage can be 'prettier'
-        formatter = '',
+        formatter = 'prettier',
         autoformat = false,
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },
@@ -56,9 +55,19 @@ O = {
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },
     tailwindls = {filetypes = {'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'}},
-    clang = {diagnostics = {virtual_text = true, signs = true, underline = true}}
+    clang = {diagnostics = {virtual_text = true, signs = true, underline = true}},
     -- css = {formatter = '', autoformat = false, virtual_text = true},
     -- json = {formatter = '', autoformat = false, virtual_text = true}
+    dashboard = {
+        custom_header = {
+            '                 _..._                                                                           ',
+            '               .\'   (_`.    _                         __     ___           ',
+            '              :  .      :  | |   _   _ _ __   __ _ _ _\\ \\   / (_)_ __ ___  ',
+            '              :)    ()  :  | |  | | | | \'_ \\ / _` | \'__\\ \\ / /| | \'_ ` _ \\ ',
+            '              `.   .   .\'  | |__| |_| | | | | (_| | |   \\ V / | | | | | | |',
+            '                `-...-\'    |_____\\__,_|_| |_|\\__,_|_|    \\_/  |_|_| |_| |_|'
+        },
+    }
 }
 
 DATA_PATH = vim.fn.stdpath('data')

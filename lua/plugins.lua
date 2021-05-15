@@ -8,129 +8,128 @@ if fn.empty(fn.glob(install_path)) > 0 then
     execute 'packadd packer.nvim'
 end
 
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+--- Check if a file or directory exists in this path
+local function require_plugin(plugin)
+    local plugin_prefix = fn.stdpath("data") .. "/site/pack/packer/opt/"
+
+    local plugin_path = plugin_prefix .. plugin .. "/"
+    --	print('test '..plugin_path)
+    local ok, err, code = os.rename(plugin_path, plugin_path)
+    if not ok then
+        if code == 13 then
+            -- Permission denied, but it exists
+            return true
+        end
+    end
+    --	print(ok, err, code)
+    if ok then vim.cmd("packadd " .. plugin) end
+    return ok, err, code
+end
+
 
 return require('packer').startup(function(use)
     -- Packer can manage itself as an optional plugin
-    use {'wbthomason/packer.nvim'}
+    use "wbthomason/packer.nvim"
 
-    -- Information
-    use 'nanotee/nvim-lua-guide'
+    -- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
+    use {"neovim/nvim-lspconfig", opt = true}
+    use {"glepnir/lspsaga.nvim", opt = true}
+    use {"kabouzeid/nvim-lspinstall", opt = true}
+    use {"ray-x/lsp_signature.nvim", opt = true}
 
-    -- Quality of life improvements 
-    use 'norcalli/nvim_utils' -- xxx
+    -- Telescope
+    use {"nvim-lua/popup.nvim", opt = true}
+    use {"nvim-lua/plenary.nvim", opt = true}
+    use {"nvim-telescope/telescope.nvim", opt = true}
+    use {"nvim-telescope/telescope-fzy-native.nvim", opt = true}
+    use {'nvim-telescope/telescope-media-files.nvim', opt = true}
 
-    -- LSP
-    use 'RishabhRD/popfix' -- xxx
-    use 'neovim/nvim-lspconfig'
-    use({ -- xxx
-        "RishabhRD/nvim-lsputils",
-        requires = "RishabhRD/popfix"
-    })
-    use 'glepnir/lspsaga.nvim' -- xxx
-    use 'onsails/lspkind-nvim'
-    use({"nvim-lua/lsp-status.nvim"}) -- xx
-    use({"ray-x/lsp_signature.nvim"})
-    use({"kosayoda/nvim-lightbulb"})
-    use 'kabouzeid/nvim-lspinstall'
-    use 'mfussenegger/nvim-jdtls'
-
-    -- Debugging & linting
-    use({"mfussenegger/nvim-lint"})
-    use({"mfussenegger/nvim-dap"})
-    use({"theHamsta/nvim-dap-virtual-text"})
+    -- Debugging
+    use {"mfussenegger/nvim-dap", opt = true}
 
     -- Autocomplete
-    use 'hrsh7th/nvim-compe'
-    use 'rafamadriz/friendly-snippets'
-    use 'mattn/emmet-vim'
-
-    -- Snippets
-    use({ -- xx
-        "hrsh7th/vim-vsnip",
-        requires = {"hrsh7th/vim-vsnip-integ"}
-    })
+    use {"hrsh7th/nvim-compe", opt = true}
+    use {"hrsh7th/vim-vsnip", opt = true}
+    use {"rafamadriz/friendly-snippets", opt = true}
 
     -- Treesitter
-    use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
-    use({"nvim-treesitter/nvim-treesitter-textobjects", requires = "nvim-treesitter/nvim-treesitter"})
-    use({"nvim-treesitter/nvim-treesitter-refactor", requires = "nvim-treesitter/nvim-treesitter"})
-    use({"nvim-treesitter/playground", requires = "nvim-treesitter/nvim-treesitter"})
-    use({"p00f/nvim-ts-rainbow", requires = "nvim-treesitter/nvim-treesitter"})
-    use({
-        "windwp/nvim-ts-autotag",
-        config = function()
-            require("nvim-ts-autotag").setup()
-        end
-    })
-
-    -- Icons
-    use 'kyazdani42/nvim-web-devicons'
-
-    -- Status Line and Bufferline
-    use({"glepnir/galaxyline.nvim", requires = "kyazdani42/nvim-web-devicons"})
-    use 'romgrk/barbar.nvim'
-    use 'moll/vim-bbye'
-
-    -- Tag viewer
-    use({"liuchengxu/vista.vim"})
-
-    -- Undotree
-    use({"mbbill/undotree", cmd = "UndotreeToggle"})
-
-    -- Find and replace
-    use 'brooth/far.vim'
-
-    use 'nvim-lua/popup.nvim'
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-media-files.nvim'
+    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+    use({"nvim-treesitter/nvim-treesitter-refactor", opt = true})
+    use({"nvim-treesitter/playground", opt = true})
+    use({"p00f/nvim-ts-rainbow", opt = true})
+    use {"windwp/nvim-ts-autotag", opt = true}
 
     -- Explorer
-    use({"kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons"})
+    use {"kyazdani42/nvim-tree.lua", opt = true}
+    -- TODO remove when open on dir is supported by nvimtree
+    use "kevinhwang91/rnvimr"
 
-    -- Color && themes
-    use 'christianchiarulli/nvcode-color-schemes.vim'
-    use 'norcalli/nvim-colorizer.lua'
+    use {"lewis6991/gitsigns.nvim", opt = true}
+    use {'f-person/git-blame.nvim', opt = true}
+    use {"folke/which-key.nvim", opt = true}
+    use {"ChristianChiarulli/dashboard-nvim", opt = true}
+    use {"windwp/nvim-autopairs", opt = true}
+    use {"terrortylor/nvim-comment", opt = true}
+    use {"kevinhwang91/nvim-bqf", opt = true}
 
-    -- Git
-    use 'TimUntersberger/neogit'
-    use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
-    use 'f-person/git-blame.nvim'
-    use 'mattn/webapi-vim'
-    use 'tpope/vim-fugitive'
+    -- Color
+    use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
 
-    -- Format
-    -- use({"mhartington/formatter.nvim"})
+    -- Icons
+    use {"kyazdani42/nvim-web-devicons", opt = true}
 
-    -- Comment
-    use 'b3nj5m1n/kommentary'
-
-    -- Ranger
-    use 'kevinhwang91/rnvimr'
-
-    -- Start vim
-    use 'mhinz/vim-startify'
-
-    -- Which key
-    use 'liuchengxu/vim-which-key'
+    -- Status Line and Bufferline
+    use {"glepnir/galaxyline.nvim", opt = true}
+    use {"romgrk/barbar.nvim", opt = true}
+    -- Find and replace
+    use {'brooth/far.vim', opt = true}
 
     -- Floaterm
-    use 'voldikss/vim-floaterm'
+    use {'voldikss/vim-floaterm', opt = true}
 
-    -- General Plugins
-    use {'mg979/vim-visual-multi', branch = 'master'}
-    use 'windwp/nvim-autopairs'
-    use 'kevinhwang91/nvim-bqf'
-    use 'unblevable/quick-scope'
-    use 'airblade/vim-rooter'
-    use 'psliwka/vim-smoothie'
-    use 'turbio/bracey.vim'
-    use 'AndrewRadev/tagalong.vim'
-    use 'tpope/vim-sleuth'
-    use 'phaazon/hop.nvim'
-    use "blackCauldron7/surround.nvim"
-    use 'metakirby5/codi.vim'
-    -- use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
-    -- use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](1) end }
+    use {"blackCauldron7/surround.nvim", opt = true}
+
+    use {'mg979/vim-visual-multi', opt = true, branch = 'master'}
+
+    use {'mattn/emmet-vim', opt = true}
+
+    use {'junegunn/vim-easy-align'}
+
+    require_plugin("nvim-lspconfig")
+    require_plugin("lspsaga.nvim")
+    require_plugin("nvim-lspinstall")
+    require_plugin("friendly-snippets")
+    require_plugin("popup.nvim")
+    require_plugin("plenary.nvim")
+    require_plugin("telescope.nvim")
+    require_plugin("telescope-media-files.nvim")
+    require_plugin("nvim-dap")
+    require_plugin("nvim-compe")
+    require_plugin("completion-nvim")
+    require_plugin("lsp_signature.nvim")
+    require_plugin("vim-vsnip")
+    require_plugin("nvim-treesitter")
+    require_plugin("nvim-treesitter-refactor")
+    require_plugin("playground")
+    require_plugin("nvim-ts-rainbow")
+    require_plugin("nvim-ts-autotag")
+    require_plugin("nvim-tree.lua")
+    require_plugin("gitsigns.nvim")
+    require_plugin("git-blame")
+    require_plugin("which-key.nvim")
+    require_plugin("dashboard-nvim")
+    require_plugin("nvim-autopairs")
+    require_plugin("nvim-comment")
+    require_plugin("nvim-bqf")
+    require_plugin("nvcode-color-schemes.vim")
+    require_plugin("nvim-web-devicons")
+    require_plugin("galaxyline.nvim")
+    require_plugin("barbar.nvim")
+    require_plugin("far.nvim")
+    require_plugin("vim-floaterm")
+    require_plugin("surround.nvim")
+    require_plugin("vim-visual-multi")
+    require_plugin("emmet-vim")
+    require_plugin("vim-easy-align")
+
 end)
