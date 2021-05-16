@@ -1,3 +1,5 @@
+local utils = require'config.utils'
+
 require'which-key'.setup {
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
@@ -44,17 +46,17 @@ local opts = {
 }
 
 -- Set leader
-vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', {noremap = true, silent = true})
+utils.map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
 
-vim.api.nvim_set_keymap('n', '<Leader>n', ':set hlsearch!<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader> ', '<Esc>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>?', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>r', ':RnvimrToggle<CR>', {noremap = true, silent = true})
+utils.map('n', '<Leader>n', ':set hlsearch!<CR>', {noremap = true, silent = true})
+utils.map('n', '<Leader> ', '<Esc>', {noremap = true, silent = true})
+utils.map('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+utils.map('n', '<Leader>?', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
+utils.map('n', '<Leader>r', ':RnvimrToggle<CR>', {noremap = true, silent = true})
 
 -- Comments
-vim.api.nvim_set_keymap("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+utils.map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+utils.map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 
 -- TODO create entire treesitter section
 
@@ -123,7 +125,7 @@ local mappings = {
 
     s = {
         name = "Search",
-        b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
+        b = {"<cmd>Telescope buffers<cr>", "Buffers"},
         c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
         d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
         D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
