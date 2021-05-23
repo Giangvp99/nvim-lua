@@ -71,11 +71,6 @@ end
 time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
-  ["barbar.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/opt/barbar.nvim"
-  },
   ["dashboard-nvim"] = {
     loaded = false,
     needs_bufread = false,
@@ -135,6 +130,10 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/opt/nvim-bqf"
+  },
+  ["nvim-bufferline.lua"] = {
+    loaded = true,
+    path = "/home/truonggiangvp99/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
   },
   ["nvim-comment"] = {
     loaded = false,

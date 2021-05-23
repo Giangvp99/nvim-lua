@@ -1,3 +1,5 @@
+local utils = require "config.utils"
+
 local function documentHighlight(client, bufnr)
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
@@ -42,6 +44,23 @@ function lsp_config.on_attach(client, bufnr)
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     require"lsp_signature".on_attach(cfg)
+
+    utils.map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+    utils.map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+    utils.map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+    utils.map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+    utils.map('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+    utils.map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+    utils.map('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+    utils.map('n', '<leader>gw', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+    utils.map('n', '<leader>gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+    utils.map('n', '<leader>ah', '<cmd>lua vim.lsp.buf.hover()<CR>')
+    utils.map('n', '<leader>af', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+    utils.map('n', '<leader>ee', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+    utils.map('n', '<leader>ar', '<cmd>lua vim.lsp.buf.rename()<CR>')
+    utils.map('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+    utils.map('n', '<leader>ai', '<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
+    utils.map('n', '<leader>ao', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
 end
 
 return lsp_config

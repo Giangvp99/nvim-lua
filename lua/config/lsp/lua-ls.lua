@@ -1,7 +1,6 @@
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
 USER = vim.fn.expand('$USER')
 
-
 local sumneko_root_path = "/home/" .. USER .. "/.config/nvim/ls/lua-language-server"
 local sumneko_binary = "/home/" .. USER .. "/.config/nvim/ls/lua-language-server/bin/Linux/lua-language-server"
 

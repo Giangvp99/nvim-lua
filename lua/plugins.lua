@@ -26,7 +26,6 @@ local function require_plugin(plugin)
     return ok, err, code
 end
 
-
 return require('packer').startup(function(use)
     -- Packer can manage itself as an optional plugin
     use "wbthomason/packer.nvim"
@@ -80,7 +79,8 @@ return require('packer').startup(function(use)
 
     -- Status Line and Bufferline
     use {"glepnir/galaxyline.nvim", opt = true}
-    use {"romgrk/barbar.nvim", opt = true}
+    use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+
     -- Find and replace
     use {'brooth/far.vim', opt = true}
 
@@ -124,7 +124,7 @@ return require('packer').startup(function(use)
     require_plugin("nvcode-color-schemes.vim")
     require_plugin("nvim-web-devicons")
     require_plugin("galaxyline.nvim")
-    require_plugin("barbar.nvim")
+    require_plugin("nvim-bufferline")
     require_plugin("far.nvim")
     require_plugin("vim-floaterm")
     require_plugin("surround.nvim")

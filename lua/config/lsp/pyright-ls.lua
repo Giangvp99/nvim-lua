@@ -9,13 +9,13 @@ require'lspconfig'.pyright.setup {
             update_in_insert = true
         })
     },
-    	 settings = {
-      python = {
-        analysis = {
-		  typeCheckingMode = O.python.analysis.type_checking,
-		  autoSearchPaths = O.python.analysis.auto_search_paths,
-          useLibraryCodeForTypes = O.python.analysis.use_library_code_types
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = O.python.analysis.type_checking,
+                autoSearchPaths = O.python.analysis.auto_search_paths,
+                useLibraryCodeForTypes = O.python.analysis.use_library_code_types
+            }
         }
-      }
     }
 }

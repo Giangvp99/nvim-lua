@@ -1,5 +1,3 @@
-local utils = require'config.utils'
-
 require'which-key'.setup {
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
@@ -19,7 +17,7 @@ require'which-key'.setup {
     icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
         separator = "➜", -- symbol used between a key and it's label
-        group = "+" -- symbol prepended to a group
+        group = "" -- symbol prepended to a group
     },
     window = {
         border = "none", -- none, single, double, shadow
@@ -45,27 +43,13 @@ local opts = {
     nowait = false -- use `nowait` when creating keymaps
 }
 
--- Set leader
-utils.map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
-
-utils.map('n', '<Leader>n', ':set hlsearch!<CR>', {noremap = true, silent = true})
-utils.map('n', '<Leader> ', '<Esc>', {noremap = true, silent = true})
-utils.map('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
-utils.map('n', '<Leader>?', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
-utils.map('n', '<Leader>r', ':RnvimrToggle<CR>', {noremap = true, silent = true})
-
--- Comments
-utils.map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
-utils.map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
-
--- TODO create entire treesitter section
-
 local mappings = {
-    ["/"] = "Comment",
-    ["e"] = "Explorer",
-    ["n"] = "No Highlight",
-    ["?"] = "Find current file",
-    ["r"] = "Ranger",
+    ["/"] = {'<cmd>CommentToggle<cr>', 'Comment'},
+    ["e"] = {'<cmd>NvimTreeToggle<cr>', 'Explorer'},
+    ["n"] = {'<cmd>set hlsearch!<cr>', 'No Highlight'},
+    ["?"] = {'<cmd>NvimTreeFindFile<cr>', '???'},
+    ["r"] = {'<cmd>RnvimrToggle<cr>', 'Ranger'},
+    [" "] = {'<cmd><Esc><cr>', "Ignore"},
     --[[ d = {
         name = "+debug",
         b = {"<cmd>debugtogglebreakpoint<cr>", "toggle breakpoint"},
@@ -101,12 +85,13 @@ local mappings = {
     },
     b = {
         name = "Buffer",
-        n = {"<cmd>BufferMoveNext<cr>", "next"},
-        p = {"<cmd>BufferMovePrevious<cr>", "prev"},
-        b = {"<cmd>BufferPick<cr>", "pick"},
-        d = {"<cmd>BufferDelete<cr>", "delete"},
-        c = {"<cmd>BufferClose<cr>", "close"},
-        r = {"<cmd>:luafile %<cr>","reload"},
+        n = {"<cmd>BufferLineCycleNext<cr>", "next"},
+        p = {"<cmd>BufferLineCyclePrev<cr>", "prev"},
+        b = {"<cmd>BufferLinePick<cr>", "pick"},
+        d = {"<cmd>:bw<cr>", "delete"},
+        w = {"<cmd>:w<cr>", "write"},
+        c = {"<cmd>:q<cr>", "close"},
+        r = {"<cmd>:luafile %<cr>", "reload"},
         [" "] = {"<ESC>", "Close"}
     },
     l = {
@@ -122,7 +107,6 @@ local mappings = {
         n = {"<cmd>Lspsata diagnostic_jump_next", "Next Diagnostic"},
         [" "] = {"<ESC>", "Close"}
     },
-
     s = {
         name = "Search",
         b = {"<cmd>Telescope buffers<cr>", "Buffers"},
@@ -154,7 +138,8 @@ local mappings = {
         f = {"<cmd>Farr --source=vimgrep<cr>", "File"},
         p = {"<cmd>Farr --source=rgnvim<cr>", "Project"},
         [" "] = {"<ESC>", "Close"}
-    }
+    },
+    q = {"<cmd>:qa<cr>", "Quit Vim"}
 }
 
 local wk = require "which-key"

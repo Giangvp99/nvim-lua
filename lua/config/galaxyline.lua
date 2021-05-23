@@ -194,7 +194,7 @@ gls.left[5] = {
     }
 }
 
-function check_git_workspace()
+local function check_git_workspace()
     if vim.bo.buftype == 'terminal' then return false end
     local current_file = vim.fn.expand('%:p')
     local current_dir
@@ -328,7 +328,7 @@ local short_map = {
     ['MundoDiff'] = 'Diff'
 }
 
-function has_file_type()
+local function has_file_type()
     local f_type = vim.bo.filetype
     if not f_type or f_type == '' then return false end
     return true

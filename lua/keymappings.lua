@@ -1,33 +1,30 @@
 local utils = require('config.utils')
 
+-- Set leader
+utils.map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
+
 -- better window movement
 utils.map('n', '<C-h>', '<C-w>h', {silent = true})
 utils.map('n', '<C-j>', '<C-w>j', {silent = true})
 utils.map('n', '<C-k>', '<C-w>k', {silent = true})
 utils.map('n', '<C-l>', '<C-w>l', {silent = true})
 
--- TODO fix this
 -- Terminal window navigation
-vim.cmd([[
-  tnoremap <C-h> <C-\><C-N><C-w>h
-  tnoremap <C-j> <C-\><C-N><C-w>j
-  tnoremap <C-k> <C-\><C-N><C-w>k
-  tnoremap <C-l> <C-\><C-N><C-w>l
-  inoremap <C-h> <C-\><C-N><C-w>h
-  inoremap <C-j> <C-\><C-N><C-w>j
-  inoremap <C-k> <C-\><C-N><C-w>k
-  inoremap <C-l> <C-\><C-N><C-w>l
-  tnoremap <Esc> <C-\><C-n>
-]])
+utils.map('t', '<C-h>', '<C-\\><C-N><C-w>h', {noremap = true, silent = true})
+utils.map('t', '<C-j>', '<C-\\><C-N><C-w>j', {noremap = true, silent = true})
+utils.map('t', '<C-k>', '<C-\\><C-N><C-w>k', {noremap = true, silent = true})
+utils.map('t', '<C-l>', '<C-\\><C-N><C-w>l', {noremap = true, silent = true})
+utils.map('i', '<C-h>', '<C-\\><C-N><C-w>h', {noremap = true, silent = true})
+utils.map('i', '<C-j>', '<C-\\><C-N><C-w>j', {noremap = true, silent = true})
+utils.map('i', '<C-k>', '<C-\\><C-N><C-w>k', {noremap = true, silent = true})
+utils.map('i', '<C-l>', '<C-\\><C-N><C-w>l', {noremap = true, silent = true})
+utils.map('t', '<esc>', '<C-\\><C-N>', {noremap = true, silent = true})
 
--- TODO fix this
 -- resize with arrows
-vim.cmd([[
-  nnoremap <silent> <C-Up>    :resize -2<CR>
-  nnoremap <silent> <C-Down>  :resize +2<CR>
-  nnoremap <silent> <C-Left>  :vertical resize -2<CR>
-  nnoremap <silent> <C-Right> :vertical resize +2<CR>
-]])
+utils.map('n', '<C-Up>', ':resize -2<cr>', {noremap = true, silent = true})
+utils.map('n', '<C-Down>', ':resize +2<cr>', {noremap = true, silent = true})
+utils.map('n', '<C-Left>', ':vertical resize +2<cr>', {noremap = true, silent = true})
+utils.map('n', '<C-Right>', ':vertical resize -2<cr>', {noremap = true, silent = true})
 
 -- better indenting
 utils.map('v', '<', '<gv', {noremap = true, silent = true})
@@ -49,3 +46,20 @@ utils.map('x', 'J', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
 vim.cmd('inoremap <expr> <c-j> (\"\\<C-n>\")')
 vim.cmd('inoremap <expr> <c-k> (\"\\<C-p>\")')
 
+-- For Compe
+utils.map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+utils.map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+utils.map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+utils.map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+-- Comments
+utils.map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+
+utils.map("n", "<F4>", ":FloatermNew<cr>", {noremap = true, silent = true})
+utils.map("n", "<F2>", ":FloatermPrev<cr>", {noremap = true, silent = true})
+utils.map("n", "<F3>", ":FloatermNext<cr>", {noremap = true, silent = true})
+utils.map("n", "<F1>", ":FloatermToggle<cr>", {noremap = true, silent = true})
+utils.map("t", "<F4>", "<C-\\><C-N>:FloatermNew<cr>", {noremap = true, silent = true})
+utils.map("t", "<F2>", "<C-\\><C-N>:FloatermPrev<cr>", {noremap = true, silent = true})
+utils.map("t", "<F3>", "<C-\\><C-N>:FloatermNext<cr>", {noremap = true, silent = true})
+utils.map("t", "<F1>", "<C-\\><C-N>:FloatermToggle<cr>", {noremap = true, silent = true})
