@@ -5,8 +5,11 @@ vim.g.mapleader = ' '
 vim.cmd('set iskeyword+=-') -- treat dash separated words as a word text object"
 vim.cmd('set shortmess+=c') -- Don't pass messages to |ins-completion-menu|.
 vim.cmd('set whichwrap+=<,>,[,],h,l')
+vim.cmd('set inccommand=split') -- Make substitution work in realtime
+vim.cmd('filetype plugin on') -- filetype detection
 vim.cmd('syntax enable')
 
+utils.opt('o', 'title', true)
 utils.opt('o', 'hidden', O.hidden_files) -- Enable modified buffers in background
 utils.opt('w', 'wrap', O.wrap_lines) -- Disable line wrap
 utils.opt('o', 'encoding', "utf-8") -- The encoding displayed
@@ -47,3 +50,5 @@ utils.opt('o', 'smartcase', true) -- Don't ignore case with capitals
 utils.opt('w', 'relativenumber', O.relative_number) -- Relative line numbers
 utils.opt('o', 'clipboard', "unnamedplus") -- Copy paste between vim and everything else
 utils.opt('o', 'guifont', "Fira Code")
+
+vim.g.python3_host_prog = "/usr/bin/python3"

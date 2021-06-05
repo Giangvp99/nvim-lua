@@ -93,7 +93,11 @@ return require('packer').startup(function(use)
 
     use {'mattn/emmet-vim', opt = true}
 
-    use {'junegunn/vim-easy-align'}
+    use {'junegunn/vim-easy-align', opt = true}
+
+    use {'mfussenegger/nvim-jdtls', opt = true}
+
+    use {'glench/vim-jinja2-syntax', opt = true}
 
     require_plugin("nvim-lspconfig")
     require_plugin("lspsaga.nvim")
@@ -131,5 +135,7 @@ return require('packer').startup(function(use)
     require_plugin("vim-visual-multi")
     require_plugin("emmet-vim")
     require_plugin("vim-easy-align")
+    require_plugin("nvim-jdtls")
+    require_plugin("vim-jinja2-syntax")
 
 end)

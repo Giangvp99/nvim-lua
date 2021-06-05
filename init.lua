@@ -1,5 +1,5 @@
-require('plugins')
 require('globals')
+require('plugins')
 vim.cmd('luafile ~/.config/nvim/O.lua')
 require('settings')
 require('keymappings')

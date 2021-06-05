@@ -6,7 +6,7 @@ O = {
     wrap_lines = false,
     number = true,
     relative_number = true,
-    shell = 'bash',
+    shell = 'zsh',
 
     -- @usage pass a table with your desired languages
     treesitter = {

@@ -124,7 +124,8 @@ local mappings = {
     t = {
         name = "Terminal",
         r = {"<cmd>FloatermNew ranger<cr>", "ranger"},
-        t = {"<cmd>FloatermToggle<cr>", "toggle"},
+        t = {"<cmd>FloatermToggle<cr>", "terminal"},
+        n = {"<cmd>FloatermNew<cr>","new terminal"},
         [" "] = {"<ESC>", "Close"}
     },
     S = {

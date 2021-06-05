@@ -35,8 +35,8 @@ utils.map('i', 'kj', '<ESC>', {noremap = true, silent = true})
 utils.map('i', 'jj', '<ESC>', {noremap = true, silent = true})
 
 -- Tab switch buffer
-utils.map('n', '<TAB>', ':bnext<CR>', {noremap = true, silent = true})
-utils.map('n', '<S-TAB>', ':bprevious<CR>', {noremap = true, silent = true})
+utils.map('n', '<TAB>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true})
+utils.map('n', '<S-TAB>', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true})
 
 -- Move selected line / block of text in visual mode
 utils.map('x', 'K', ':move \'<-2<CR>gv-gv', {noremap = true, silent = true})
@@ -55,11 +55,8 @@ utils.map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 -- Comments
 utils.map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 
-utils.map("n", "<F4>", ":FloatermNew<cr>", {noremap = true, silent = true})
-utils.map("n", "<F2>", ":FloatermPrev<cr>", {noremap = true, silent = true})
-utils.map("n", "<F3>", ":FloatermNext<cr>", {noremap = true, silent = true})
-utils.map("n", "<F1>", ":FloatermToggle<cr>", {noremap = true, silent = true})
-utils.map("t", "<F4>", "<C-\\><C-N>:FloatermNew<cr>", {noremap = true, silent = true})
-utils.map("t", "<F2>", "<C-\\><C-N>:FloatermPrev<cr>", {noremap = true, silent = true})
-utils.map("t", "<F3>", "<C-\\><C-N>:FloatermNext<cr>", {noremap = true, silent = true})
-utils.map("t", "<F1>", "<C-\\><C-N>:FloatermToggle<cr>", {noremap = true, silent = true})
+utils.map("n", "<C-Space>", ":FloatermToggle<cr>", {noremap = true, silent = true})
+utils.map("t", "<C-n>", "<C-\\><C-N>:FloatermNew<cr>", {noremap = true, silent = true})
+utils.map("t", "<C-j>", "<C-\\><C-N>:FloatermPrev<cr>", {noremap = true, silent = true})
+utils.map("t", "<C-k>", "<C-\\><C-N>:FloatermNext<cr>", {noremap = true, silent = true})
+utils.map("t", "<C-Space>", "<C-\\><C-N>:FloatermToggle<cr>", {noremap = true, silent = true})
