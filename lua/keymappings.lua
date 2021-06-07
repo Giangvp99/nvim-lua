@@ -1,7 +1,7 @@
 local utils = require('config.utils')
 
 -- Set leader
-utils.map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
+--utils.map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
 
 -- better window movement
 utils.map('n', '<C-h>', '<C-w>h', {silent = true})

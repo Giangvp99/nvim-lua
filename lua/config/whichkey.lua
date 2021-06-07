@@ -84,13 +84,12 @@ local mappings = {
         [" "] = {"<ESC>", "Close"}
     },
     b = {
-        name = "Buffer",
+        name = "Buffers",
         n = {"<cmd>BufferLineCycleNext<cr>", "next"},
         p = {"<cmd>BufferLineCyclePrev<cr>", "prev"},
         b = {"<cmd>BufferLinePick<cr>", "pick"},
         d = {"<cmd>:bw<cr>", "delete"},
         w = {"<cmd>:w<cr>", "write"},
-        c = {"<cmd>:q<cr>", "close"},
         r = {"<cmd>:luafile %<cr>", "reload"},
         [" "] = {"<ESC>", "Close"}
     },

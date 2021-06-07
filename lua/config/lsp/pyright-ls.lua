@@ -1,6 +1,8 @@
+--local capabilities = require'config.lsp.services'.capabilities()
 require'lspconfig'.pyright.setup {
     filetypes = {"python"},
     on_attach = require'config.lsp.services'.on_attach,
+--    capabilities = capabilities,
     handlers = {
         ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
             virtual_text = O.python.diagnostics.virtual_text,
