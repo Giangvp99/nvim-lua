@@ -21,7 +21,6 @@ utils.opt('o', 'mouse', "a") -- Enable your mouse
 utils.opt('o', 'splitbelow', true) -- Put new windows below current
 utils.opt('o', 'termguicolors', true) -- True color support
 utils.opt('o', 'splitright', true) -- Put new windows right of current
-utils.opt('o', 't_Co', "256") -- Support 256 colors
 utils.opt('o', 'conceallevel', 0) -- So that I can see `` in markdown files
 utils.opt('b', 'tabstop', 2) -- Number of spaces tabs count for
 utils.opt('b', 'shiftwidth', 2) -- Size of an indent
@@ -51,4 +50,6 @@ utils.opt('w', 'relativenumber', O.relative_number) -- Relative line numbers
 utils.opt('o', 'clipboard', "unnamedplus") -- Copy paste between vim and everything else
 utils.opt('o', 'guifont', "Fira Code")
 
+-- utils.opt('o', 't_Co', "256") -- Support 256 colors
+vim.go.t_Co = "256"
 vim.g.python3_host_prog = "/usr/bin/python3"

@@ -15,11 +15,11 @@ require('bufferline').setup {
         -- max_name_length = 20,
         -- max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
         tab_size = 20,
-        diagnostics = "nvim_lsp",
-        diagnostics_indicator = function(count, level, diagnostics_dict)
-            local icon = level:match("error") and " " or " "
-            return " " .. icon .. count
-        end,
+        -- diagnostics = "nvim_lsp",
+        -- diagnostics_indicator = function(count, level, diagnostics_dict)
+        --     local icon = level:match("error") and " " or " "
+        --     return " " .. icon .. count
+        -- end,
         -- NOTE: this will be called a lot so don't do any heavy processing here
         custom_filter = function(buf_number)
             -- filter out filetypes you don't want to see
@@ -38,7 +38,7 @@ require('bufferline').setup {
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
-        separator_style = "slant",
+        separator_style = "thick", -- "thin", "slant"
         enforce_regular_tabs = true,
         always_show_bufferline = true,
         sort_by = 'directory'
