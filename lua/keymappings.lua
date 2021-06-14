@@ -46,12 +46,6 @@ utils.map('x', 'J', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
 vim.cmd('inoremap <expr> <c-j> (\"\\<C-n>\")')
 vim.cmd('inoremap <expr> <c-k> (\"\\<C-p>\")')
 
--- For Compe
-utils.map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-utils.map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-utils.map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-utils.map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
 -- Comments
 utils.map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 

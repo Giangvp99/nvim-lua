@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
     -- Autocomplete
     use {"hrsh7th/nvim-compe", opt = true}
     use {"hrsh7th/vim-vsnip", opt = true}
+    use {'hrsh7th/vim-vsnip-integ', opt = true}
     use {"rafamadriz/friendly-snippets", opt = true}
 
     -- Treesitter
@@ -97,21 +98,25 @@ return require('packer').startup(function(use)
 
     use {'mfussenegger/nvim-jdtls', opt = true}
 
-    use {'glench/vim-jinja2-syntax', opt = true}
+    use {'mitsuhiko/vim-jinja', opt = true}
+
+    use {'norcalli/nvim-colorizer.lua', opt = true}
+
+    use {'norcalli/snippets.nvim', opt = true}
 
     require_plugin("nvim-lspconfig")
     require_plugin("lspsaga.nvim")
+    require_plugin("lsp_signature.nvim")
     require_plugin("nvim-lspinstall")
-    require_plugin("friendly-snippets")
     require_plugin("popup.nvim")
     require_plugin("plenary.nvim")
     require_plugin("telescope.nvim")
     require_plugin("telescope-media-files.nvim")
     require_plugin("nvim-dap")
     require_plugin("nvim-compe")
-    require_plugin("completion-nvim")
-    require_plugin("lsp_signature.nvim")
     require_plugin("vim-vsnip")
+    require_plugin("vim-vsnip-integ")
+    require_plugin("friendly-snippets")
     require_plugin("nvim-treesitter")
     require_plugin("nvim-treesitter-refactor")
     require_plugin("playground")
@@ -136,6 +141,8 @@ return require('packer').startup(function(use)
     require_plugin("emmet-vim")
     require_plugin("vim-easy-align")
     require_plugin("nvim-jdtls")
-    require_plugin("vim-jinja2-syntax")
+    require_plugin("vim-jinja")
+    require_plugin("nvim-colorizer.lua")
+    require_plugin("snippets.nvim")
 
 end)

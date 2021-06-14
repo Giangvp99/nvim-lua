@@ -125,7 +125,7 @@ gls.left[1] = {
 gls.left[2] = {
     FileName = {
         provider = function()
-            if not buffer_not_empty() then return sep.left_filled end
+            if not buffer_not_empty() then return "" end
             local fname
             if wide_enough(120) then
                 fname = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
@@ -141,8 +141,8 @@ gls.left[2] = {
         end,
         highlight = 'FileName',
         separator = sep.left_filled,
-        separator_highlight = "FileNameSep",
-        condition = buffer_not_empty
+        separator_highlight = "FileNameSep"
+        -- condition = buffer_not_empty
     }
 }
 
@@ -182,10 +182,42 @@ gls.left[6] = {
         highlight = {colors.bright_red, colors.black0}
     }
 }
-gls.left[7] = {GitBranch = {provider = "GitBranch", condition = check_git_workspace, highlight = "GitBranch"}}
-gls.left[9] = {DiffAdd = {provider = 'DiffAdd', icon = '   ', highlight = 'DiffAdd'}}
-gls.left[10] = {DiffModified = {provider = 'DiffModified', icon = ' ', highlight = 'DiffModified'}}
-gls.left[11] = {DiffRemove = {provider = 'DiffRemove', icon = '  ', highlight = 'DiffRemove'}}
+gls.left[7] = {
+    GitBranch = {
+        provider = "GitBranch",
+        condition = check_git_workspace,
+        highlight = "GitBranch",
+        separator = " ",
+        separator_highlight = {colors.black0, colors.black0}
+    }
+}
+gls.left[9] = {
+    DiffAdd = {
+        provider = 'DiffAdd',
+        icon = ' ',
+        highlight = 'DiffAdd'
+        -- separator = " ",
+        -- separator_highlight = {colors.black0, colors.black0}
+    }
+}
+gls.left[10] = {
+    DiffModified = {
+        provider = 'DiffModified',
+        icon = ' ',
+        highlight = 'DiffModified'
+        -- separator = " ",
+        -- separator_highlight = {colors.black0, colors.black0}
+    }
+}
+gls.left[11] = {
+    DiffRemove = {
+        provider = 'DiffRemove',
+        icon = ' ',
+        highlight = 'DiffRemove'
+        -- separator = " ",
+        -- separator_highlight = {colors.black0, colors.black0}
+    }
+}
 
 gls.right[1] = {
     DiagnosticWarn = {provider = 'DiagnosticWarn', icon = '  ', highlight = {colors.bright_yellow, colors.black0}}

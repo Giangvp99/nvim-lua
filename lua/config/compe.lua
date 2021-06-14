@@ -1,5 +1,3 @@
-vim.cmd [[set shortmess+=c]]
-vim.o.completeopt = 'menuone,noselect'
 vim.cmd [[highlight link CompeDocumentation NormalFloat]]
 
 require'compe'.setup {
@@ -72,3 +70,8 @@ vim.cmd [[
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 ]]
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
