@@ -1,3 +1,1 @@
-.vsnip
-ls
-plugin
+lua/config/lsp/lua-language-server

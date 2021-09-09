@@ -27,9 +27,9 @@ utils.define_augroups({
         {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'FileType', 'java', 'luafile ~/.config/nvim/lua/lsp/java-ls.lua'},
-        {'FileType', 'java', 'nnoremap ca <Cmd>lua require(\'jdtls\').code_action()<CR>'},
-        {'FileType', 'java', 'nnoremap ca <Cmd>lua require(\'jdtls\').code_action()<CR>'},
+        -- {'FileType', 'java', 'luafile ~/.config/nvim/lua/lsp/java-ls.lua'},
+        -- {'FileType', 'java', 'nnoremap ca <Cmd>lua require(\'jdtls\').code_action()<CR>'},
+        -- {'FileType', 'java', 'nnoremap ca <Cmd>lua require(\'jdtls\').code_action()<CR>'},
         {'FileType', 'markdown', 'set wrap'}
         -- {'User', 'GoyoLeave', 'lua require(\'galaxyline\').disable_galaxyline()'},
         -- {'User', 'GoyoEnter', 'lua require(\'galaxyline\').galaxyline_augroup()'},
@@ -204,10 +204,6 @@ function utils.file_exists(name)
     end
 end
 
--- autoformat
--- autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
-
-
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
 function utils.opt(scope, key, value)
@@ -219,18 +215,6 @@ function utils.map(mode, lhs, rhs, opts)
     local options = {noremap = true}
     if opts then options = vim.tbl_extend('force', options, opts) end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-function utils.create_augroups(definitions)
-    for group_name, definition in pairs(definitions) do
-        vim.api.nvim_command('augroup ' .. group_name)
-        vim.api.nvim_command('autocmd!')
-        for _, def in ipairs(definition) do
-            local command = table.concat(vim.tbl_flatten {'autocmd', def}, ' ')
-            vim.api.nvim_command(command)
-        end
-        vim.api.nvim_command('augroup END')
-    end
 end
 
 return utils

@@ -1,7 +1,8 @@
-local utils = require('config.utils')
+local utils = require('utils')
 
 -- Set leader
---utils.map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
+-- utils.map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
+vim.g.mapleader = ' '
 
 -- better window movement
 utils.map('n', '<C-h>', '<C-w>h', {silent = true})
@@ -31,8 +32,8 @@ utils.map('v', '<', '<gv', {noremap = true, silent = true})
 utils.map('v', '>', '>gv', {noremap = true, silent = true})
 
 utils.map('i', 'jk', '<ESC>', {noremap = true, silent = true})
-utils.map('i', 'kj', '<ESC>', {noremap = true, silent = true})
-utils.map('i', 'jj', '<ESC>', {noremap = true, silent = true})
+-- utils.map('i', 'kj', '<ESC>', {noremap = true, silent = true})
+-- utils.map('i', 'jj', '<ESC>', {noremap = true, silent = true})
 
 -- Tab switch buffer
 utils.map('n', '<TAB>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true})

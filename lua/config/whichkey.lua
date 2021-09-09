@@ -5,7 +5,7 @@ require'which-key'.setup {
         -- the presets plugin, adds help for a bunch of default keybindings in Neovim
         -- No actual key bindings are created
         presets = {
-            operators = true, -- adds help for operators like d, y, ...
+            operators = false, -- adds help for operators like d, y, ...
             motions = true, -- adds help for motions
             text_objects = true, -- help for text objects triggered after entering an operator
             windows = true, -- default bindings on <c-w>
@@ -17,7 +17,7 @@ require'which-key'.setup {
     icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
         separator = "➜", -- symbol used between a key and it's label
-        group = "" -- symbol prepended to a group
+        group = " " -- symbol prepended to a group
     },
     window = {
         border = "none", -- none, single, double, shadow
@@ -49,7 +49,7 @@ local mappings = {
     ["n"] = {'<cmd>set hlsearch!<cr>', 'No Highlight'},
     ["?"] = {'<cmd>NvimTreeFindFile<cr>', '???'},
     ["r"] = {'<cmd>RnvimrToggle<cr>', 'Ranger'},
-    [" "] = {'<cmd><Esc><cr>', "Ignore"},
+    [" "] = {'<Esc>', "Ignore"},
     --[[ d = {
         name = "+debug",
         b = {"<cmd>debugtogglebreakpoint<cr>", "toggle breakpoint"},
@@ -96,14 +96,18 @@ local mappings = {
     l = {
         name = "LSP",
         f = {"<cmd>LspFormatting<cr>", "Format"},
-        d = {"<cmd>lua vim.lsp.buf.definition()<cr>", "Definition"},
-        D = {"<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration"},
-        r = {"<cmd>lua vim.lsp.buf.references()<cr>", "References"},
-        i = {"<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation"},
+        d = {"<cmd>LspDefinition<cr>", "Definition"},
+        D = {"<cmd>LspDeclaration<cr>", "Declaration"},
+        R = {"<cmd>LspReferences<cr>", "References"},
+        r = {"<cmd>LspRename<CR>", "Rename"},
+        i = {"<cmd>LspImplementation<cr>", "Implementation"},
         a = {"<cmd>Lspsaga code_action<cr>", "Code Action"},
         H = {"<cmd>Lspsaga hover_doc<cr>", "Hover Document"},
-        p = {"<cmd>Lspsaga diagnostic_jump_prev", "Previous Diagnostic"},
-        n = {"<cmd>Lspsata diagnostic_jump_next", "Next Diagnostic"},
+        -- p = {"<cmd>Lspsaga diagnostic_jump_prev<cr>", "Previous Diagnostic"},
+        p = {"<cmd>LspGotoPrev<cr>", "Previous Diagnostic"},
+        P = {"<cmd>LspShowLineDiagnostics<cr>", "Previous Diagnostic"},
+        -- n = {"<cmd>Lspsata diagnostic_jump_next<cr>", "Next Diagnostic"},
+        n = {"<cmd>LspGotoNext<cr>", "Next Diagnostic"},
         [" "] = {"<ESC>", "Close"}
     },
     s = {
@@ -124,7 +128,7 @@ local mappings = {
         name = "Terminal",
         r = {"<cmd>FloatermNew ranger<cr>", "ranger"},
         t = {"<cmd>FloatermToggle<cr>", "terminal"},
-        n = {"<cmd>FloatermNew<cr>","new terminal"},
+        n = {"<cmd>FloatermNew<cr>", "new terminal"},
         [" "] = {"<ESC>", "Close"}
     },
     S = {
@@ -139,6 +143,7 @@ local mappings = {
         p = {"<cmd>Farr --source=rgnvim<cr>", "Project"},
         [" "] = {"<ESC>", "Close"}
     },
+
     q = {"<cmd>:qa<cr>", "Quit Vim"}
 }
 

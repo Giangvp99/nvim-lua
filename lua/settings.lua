@@ -1,7 +1,4 @@
-local utils = require('config.utils')
-
-vim.g.mapleader = ' '
-
+local utils = require('utils')
 vim.cmd('set iskeyword+=-') -- treat dash separated words as a word text object"
 vim.cmd('set shortmess+=c') -- Don't pass messages to |ins-completion-menu|.
 vim.cmd('set whichwrap+=<,>,[,],h,l')
@@ -10,8 +7,8 @@ vim.cmd('filetype plugin on') -- filetype detection
 vim.cmd('syntax enable')
 
 utils.opt('o', 'title', true)
-utils.opt('o', 'hidden', O.hidden_files) -- Enable modified buffers in background
-utils.opt('w', 'wrap', O.wrap_lines) -- Disable line wrap
+utils.opt('o', 'hidden', true) -- Enable modified buffers in background
+utils.opt('w', 'wrap', false) -- Disable line wrap
 utils.opt('o', 'encoding', "utf-8") -- The encoding displayed
 utils.opt('o', 'pumheight', 10) -- Makes popup menu smaller
 utils.opt('o', 'fileencoding', "utf-8") -- The encoding written to file
@@ -22,14 +19,14 @@ utils.opt('o', 'splitbelow', true) -- Put new windows below current
 utils.opt('o', 'termguicolors', true) -- True color support
 utils.opt('o', 'splitright', true) -- Put new windows right of current
 utils.opt('o', 'conceallevel', 0) -- So that I can see `` in markdown files
-utils.opt('b', 'tabstop', 2) -- Number of spaces tabs count for
-utils.opt('b', 'shiftwidth', 2) -- Size of an indent
+utils.opt('b', 'tabstop', 4) -- Number of spaces tabs count for
+utils.opt('b', 'shiftwidth', 4) -- Size of an indent
 utils.opt('o', 'smarttab', true) -- Makes tabbing smarter will realize you have 2 vs 4
 utils.opt('o', 'expandtab', true) -- Use spaces instead of tabs
 utils.opt('o', 'smartindent', true) -- Insert indents automatically
 utils.opt('o', 'autoindent', true) -- Good auto indent
 utils.opt('o', 'laststatus', 2) -- Always display the status line
-utils.opt('w', 'number', O.number) -- Print line number
+utils.opt('w', 'number', true) -- Print line number
 utils.opt('o', 'cursorline', true) -- Enable highlighting of the current line
 utils.opt('o', 'background', "dark") -- tell vim what the background color looks like
 utils.opt('o', 'showtabline', 2) -- Always show tabs
@@ -40,16 +37,15 @@ utils.opt('w', 'signcolumn', "yes") -- Always show the signcolumn, otherwise it 
 utils.opt('o', 'updatetime', 300) -- Faster completion
 utils.opt('o', 'timeoutlen', 100) -- By default timeoutlen is 1000 ms
 utils.opt('o', 'incsearch', true)
-
+utils.opt('o', 'hlsearch', true)
 utils.opt('o', 'completeopt', 'menuone,noinsert,noselect') -- Completion options (for deoplete)
 utils.opt('o', 'scrolloff', 4) -- Lines of context
 utils.opt('o', 'shiftround', true) -- Round indent
 utils.opt('o', 'sidescrolloff', 8) -- Columns of context
 utils.opt('o', 'smartcase', true) -- Don't ignore case with capitals
-utils.opt('w', 'relativenumber', O.relative_number) -- Relative line numbers
+utils.opt('w', 'relativenumber', true) -- Relative line numbers
 utils.opt('o', 'clipboard', "unnamedplus") -- Copy paste between vim and everything else
 utils.opt('o', 'guifont', "Fira Code")
 
--- utils.opt('o', 't_Co', "256") -- Support 256 colors
 vim.go.t_Co = "256"
 vim.g.python3_host_prog = "/usr/bin/python3"
