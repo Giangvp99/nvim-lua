@@ -20,3 +20,4 @@ augroup END
 ]]
 
 vim.g.dashboard_session_directory = '~/.config/nvim/.sessions'
+
