@@ -59,10 +59,12 @@ return require('packer').startup(function(use)
     use {"nvim-telescope/telescope.nvim", opt = true}
     use {"nvim-telescope/telescope-fzy-native.nvim", opt = true}
     use {'nvim-telescope/telescope-media-files.nvim', opt = true}
+    use {"nvim-lua/popup.nvim", opt = true}
 
     require_plugin("telescope.nvim")
     require_plugin("telescope-fzy-native.nvim")
     require_plugin("telescope-media-files.nvim")
+    require_plugin("popup.nvim")
 
     -- Autocomplete + snippets
     -------------------------------------------------------------------------------------------------------
@@ -159,9 +161,7 @@ return require('packer').startup(function(use)
     -- Auto pairs
     use {'windwp/nvim-autopairs', opt = true}
     use {"windwp/nvim-ts-autotag", opt = true}
-    -- use {'steelsojka/pears.nvim', opt = true}
 
-    -- require_plugin('pears.nvim')
     require_plugin('nvim-autopairs')
     require_plugin("nvim-ts-autotag")
 
@@ -173,9 +173,12 @@ return require('packer').startup(function(use)
     use {"p00f/nvim-ts-rainbow", opt = true}
     require_plugin("nvim-ts-rainbow")
 
-    -- Telescope
-    -- use {"nvim-lua/popup.nvim", opt = true}
-    --    require_plugin("popup.nvim")
+    -- Dashboard
+    use {'glepnir/dashboard-nvim', opt = true}
+    require_plugin("dashboard-nvim")
+
+    use {"lukas-reineke/indent-blankline.nvim", opt = true}
+    require_plugin("indent-blankline.nvim")
 
     -- Debugging
     -- use {"mfussenegger/nvim-dap", opt = true}
@@ -213,8 +216,5 @@ return require('packer').startup(function(use)
 
     -- use {'norcalli/snippets.nvim', opt = true}
     --    require_plugin("snippets.nvim")
-
-    --    use {"lukas-reineke/indent-blankline.nvim", opt = true}
-    --    require_plugin("indent-blankline.nvim")
 
 end)

@@ -122,6 +122,7 @@ local mappings = {
         r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
         R = {"<cmd>Telescope registers<cr>", "Registers"},
         t = {"<cmd>Telescope live_grep<cr>", "Text"},
+        i = {"<cmd>Telescope media_files<cr>", "Image/Video"},
         [" "] = {"<ESC>", "Close"}
     },
     t = {

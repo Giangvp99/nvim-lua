@@ -104,6 +104,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/giangvp99/.local/share/nvim/site/pack/packer/opt/cmp-vsnip"
   },
+  ["dashboard-nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/giangvp99/.local/share/nvim/site/pack/packer/opt/dashboard-nvim"
+  },
   ["eclipse.jdt.ls"] = {
     loaded = false,
     needs_bufread = false,
@@ -123,6 +128,11 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/giangvp99/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/giangvp99/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim"
   },
   ["jdtls-launcher"] = {
     loaded = false,
@@ -221,6 +231,11 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/giangvp99/.local/share/nvim/site/pack/packer/opt/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/giangvp99/.local/share/nvim/site/pack/packer/opt/popup.nvim"
   },
   rnvimr = {
     loaded = false,

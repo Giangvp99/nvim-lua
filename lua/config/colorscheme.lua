@@ -1,1 +1,1 @@
-vim.api.nvim_command [[colorscheme gruvbox]]
+vim.api.nvim_command [[colorscheme nvcode]]
