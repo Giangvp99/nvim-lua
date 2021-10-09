@@ -1,1 +1,2 @@
-lua/config/lsp/lua-language-server
+lsp
+.vscode

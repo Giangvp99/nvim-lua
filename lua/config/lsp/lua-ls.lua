@@ -1,9 +1,9 @@
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
 USER = vim.fn.expand('$USER')
 
-local sumneko_root_path = "/home/" .. USER .. "/.config/nvim/lua/config/lsp/lua-language-server"
+local sumneko_root_path = "/home/" .. USER .. "/.config/nvim/lsp/lua-language-server"
 local sumneko_binary = "/home/" .. USER ..
-                           "/.config/nvim/lua/config/lsp/lua-language-server/bin/Linux/lua-language-server"
+                           "/.config/nvim/lsp/lua-language-server/bin/Linux/lua-language-server"
 
 local runtime_path = vim.split(package.path, ';')
 -- local coq = require "coq"

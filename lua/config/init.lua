@@ -18,7 +18,7 @@ require('config.autopairs')
 -- require('config.trouble')
 
 require('config.lsp')
-require('config.lspsaga')
+-- require('config.lspsaga')
 require('config.lspkind')
 require('config.lspsignature')
 

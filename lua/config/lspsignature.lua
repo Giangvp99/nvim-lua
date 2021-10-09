@@ -7,7 +7,7 @@ require"lsp_signature".setup({
     hint_enable = false, -- virtual hint enable
     hint_prefix = "  ", -- Panda for parameter
     hint_scheme = "String",
-    use_lspsaga = true,
+    use_lspsaga = false,
     hi_parameter = "Search",
     max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
     -- to view the hiding contents

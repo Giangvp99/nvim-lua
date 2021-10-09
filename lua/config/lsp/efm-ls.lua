@@ -15,9 +15,9 @@ local black = {formatCommand = "black --quiet -", formatStdin = true}
 
 table.insert(python_arguments, flake8)
 
-table.insert(python_arguments, isort)
+-- table.insert(python_arguments, isort)
 
-table.insert(python_arguments, black)
+-- table.insert(python_arguments, black)
 
 -- lua
 local lua_arguments = {}

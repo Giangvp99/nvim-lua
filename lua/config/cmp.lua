@@ -21,8 +21,8 @@ cmp.setup({
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
             elseif check_back_space() then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n')
-            elseif vim.fn['vsnip#available'](1) == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-expand-or-jump)', true, true, true), '')
+            elseif vim.fn['vsnip#jumpable'](1) == 1 then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-jump-next)', true, true, true), '')
             else
                 fallback()
             end
@@ -32,7 +32,7 @@ cmp.setup({
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
             elseif check_back_space() then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<S-Tab>', true, true, true), 'n')
-            elseif vim.fn['vsnip#available'](-1) == 1 then
+            elseif vim.fn['vsnip#jumpable'](-1) == 1 then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-jump-prev)', true, true, true), '')
             else
                 fallback()
@@ -58,7 +58,8 @@ cmp.setup({
                 nvim_lsp = "[LSP]",
                 luasnip = "[LuaSnip]",
                 nvim_lua = "[Lua]",
-                latex_symbols = "[Latex]"
+                latex_symbols = "[Latex]",
+                vsnip = "[Snip]"
             })[entry.source.name]
             return vim_item
         end
@@ -70,6 +71,6 @@ cmp.setup({
 require("nvim-autopairs.completion.cmp").setup({
     map_cr = true, --  map <CR> on insert mode
     map_complete = true, -- it will auto insert `(` after select function or method item
-    auto_select = true -- automatically select the first item
+    auto_select =  true-- automatically select the first item
 })
 
