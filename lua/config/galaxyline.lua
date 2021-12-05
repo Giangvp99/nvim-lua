@@ -198,14 +198,34 @@ gls.left[11] = {
     }
 }
 gls.right[0] = {
-    DiagnosticError = {provider = 'DiagnosticError', icon = '  ', highlight = {colors.bright_red, colors.bg}}
+    DiagnosticError = {
+        provider = 'DiagnosticError',
+        icon = '  ',
+        highlight = {colors.bright_red, colors.bg}
+    }
 }
 gls.right[1] = {
-    DiagnosticWarn = {provider = 'DiagnosticWarn', icon = '  ', highlight = {colors.bright_yellow, colors.bg}}
+    DiagnosticWarn = {
+        provider = 'DiagnosticWarn',
+        icon = '  ',
+        highlight = {colors.bright_yellow, colors.bg}
+    }
 }
-gls.right[2] = {DiagnosticHint = {provider = 'DiagnosticHint', icon = '  ', highlight = {colors.blue, colors.bg}}}
+gls.right[2] = {
+    DiagnosticHint = {
+        provider = 'DiagnosticHint',
+        icon = '  ',
+        highlight = {colors.blue, colors.bg}
+    }
+}
 
-gls.right[3] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', highlight = {colors.blue, colors.bg}}}
+gls.right[3] = {
+    DiagnosticInfo = {
+        provider = 'DiagnosticInfo',
+        icon = '  ',
+        highlight = {colors.blue, colors.bg}
+    }
+}
 gls.right[4] = {
     ShowLspClient = {
         provider = 'GetLspClient',

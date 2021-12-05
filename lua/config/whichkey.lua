@@ -14,6 +14,7 @@ require'which-key'.setup {
             g = true -- bindings for prefixed with g
         }
     },
+    operators = {},
     icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
         separator = "➜", -- symbol used between a key and it's label
@@ -23,7 +24,8 @@ require'which-key'.setup {
         border = "none", -- none, single, double, shadow
         position = "bottom", -- bottom, top
         margin = {1, 0, 1, 0}, -- extra window margin [top, right, bottom, left]
-        padding = {2, 2, 2, 2} -- extra window padding [top, right, bottom, left]
+        padding = {1, 2, 1, 1}, -- extra window padding [top, right, bottom, left]
+        winblend = 0
     },
     layout = {
         height = {min = 4, max = 25}, -- min and max height of the columns
@@ -31,7 +33,12 @@ require'which-key'.setup {
         spacing = 3 -- spacing between columns
     },
     hidden = {"<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
-    show_help = true -- show help message on the command line when the popup is visible
+    show_help = true, -- show help message on the command line when the popup is visible
+    triggers_blacklist = {i = {"j", "k"}, v = {"j", "k"}},
+    popup_mappings = {
+        scroll_down = '<c-d>', -- binding to scroll down inside the popup
+        scroll_up = '<c-u>' -- binding to scroll up inside the popup
+    }
 }
 
 local opts = {
@@ -90,7 +97,7 @@ local mappings = {
         b = {"<cmd>BufferLinePick<cr>", "pick"},
         d = {"<cmd>:bw<cr>", "delete"},
         w = {"<cmd>:w<cr>", "write"},
-        r = {"<cmd>:luafile %<cr>", "reload"},
+        r = {"<cmd>:luafile %<cr>", "reload(luafile)"},
         [" "] = {"<ESC>", "Close"}
     },
     l = {
