@@ -1,5 +1,4 @@
-require('settings')
-require('keymappings')
-require('plugins')
-require('config')
-
+require("settings")
+require("keymappings")
+require("plugins")
+require("config")

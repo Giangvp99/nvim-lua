@@ -1,220 +1,145 @@
-local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-
+-- Automatically install packer
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-    execute 'packadd packer.nvim'
+	PACKER_BOOTSTRAP = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+	print("Installing packer close and reopen Neovim...")
+	vim.cmd([[packadd packer.nvim]])
 end
-vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
-
---- Check if a file or directory exists in this path
-local function require_plugin(plugin)
-    local plugin_prefix = fn.stdpath("data") .. "/site/pack/packer/opt/"
-
-    local plugin_path = plugin_prefix .. plugin .. "/"
-    --	print('test '..plugin_path)
-    local ok, err, code = os.rename(plugin_path, plugin_path)
-    if not ok then
-        if code == 13 then
-            -- Permission denied, but it exists
-            return true
-        end
-    end
-    --	print(ok, err, code)
-    if ok then vim.cmd("packadd " .. plugin) end
-    return ok, err, code
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+	return
 end
 
-return require('packer').startup(function(use)
-    -- Packer can manage itself as an optional plugin
-    -------------------------------------------------------------------------------------------------------
-    use {"wbthomason/packer.nvim"}
+-- Have packer use a popup window
+packer.init({
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "rounded" })
+		end,
+	},
+})
 
-    -- LSP
-    -------------------------------------------------------------------------------------------------------
-    use {"neovim/nvim-lspconfig", opt = true}
-    use {"ray-x/lsp_signature.nvim", opt = true}
-    use {"onsails/lspkind-nvim", opt = true}
-    use {"glepnir/lspsaga.nvim", opt = true}
+return require("packer").startup(function(use)
+	-- Packer can manage itself as an optional plugin
+	-------------------------------------------------------------------------------------------------------
+	use({ "wbthomason/packer.nvim" })
 
-    require_plugin("nvim-lspconfig")
-    require_plugin("lsp_signature.nvim")
-    require_plugin("lspkind-nvim")
-    require_plugin("lspsaga.nvim")
+	-- LSP
+	-------------------------------------------------------------------------------------------------------
+	use({ "neovim/nvim-lspconfig" })
+	use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
+	use({ "tamago324/nlsp-settings.nvim" }) -- language server settings defined in json for
+	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 
-    -- Language
-    use {'mfussenegger/nvim-jdtls', opt = true}
-    use {"eclipse/eclipse.jdt.ls", opt = true}
-    use {"eruizc-dev/jdtls-launcher", opt = true}
+	-- Language
+	use({ "mfussenegger/nvim-jdtls" })
+	use({ "eclipse/eclipse.jdt.ls" })
+	use({ "eruizc-dev/jdtls-launcher" })
 
-    require_plugin("nvim-jdtls")
-    require_plugin("eclipse.jdt.ls")
-    require_plugin("jdtls-launcher")
+	-- Telescope
+	-------------------------------------------------------------------------------------------------------
+	use({ "nvim-telescope/telescope.nvim" })
+	use({ "nvim-lua/popup.nvim" })
 
-    -- Telescope
-    -------------------------------------------------------------------------------------------------------
-    use {"nvim-telescope/telescope.nvim", opt = true}
-    use {"nvim-telescope/telescope-fzy-native.nvim", opt = true}
-    use {'nvim-telescope/telescope-media-files.nvim', opt = true}
-    use {"nvim-lua/popup.nvim", opt = true}
+	-- Autocomplete + snippets
+	-------------------------------------------------------------------------------------------------------
+	-- Cmp
+	use({ "hrsh7th/nvim-cmp", requires = { "hrsh7th/vim-vsnip", "hrsh7th/cmp-buffer" } })
+	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-buffer" })
+	use({ "hrsh7th/cmp-calc" })
+	use({ "hrsh7th/cmp-vsnip" })
+	use({ "hrsh7th/cmp-nvim-lua" })
+	use({ "hrsh7th/cmp-path" })
+	use({ "hrsh7th/cmp-cmdline" })
+	use({ "saadparwaiz1/cmp_luasnip" })
+	-- Snippets
+	use("L3MON4D3/LuaSnip") -- snippet engine
+	use({ "hrsh7th/vim-vsnip" })
+	use({ "hrsh7th/vim-vsnip-integ" })
+	use({ "rafamadriz/friendly-snippets" })
 
-    require_plugin("telescope.nvim")
-    require_plugin("telescope-fzy-native.nvim")
-    require_plugin("telescope-media-files.nvim")
-    require_plugin("popup.nvim")
+	-- Syntax
+	-------------------------------------------------------------------------------------------------------
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	-- use {"nvim-treesitter/nvim-treesitter-refactor"}
 
-    -- Autocomplete + snippets
-    -------------------------------------------------------------------------------------------------------
-    -- Cmp
-    use {"hrsh7th/nvim-cmp", requires = {"hrsh7th/vim-vsnip", "hrsh7th/cmp-buffer"}, opt = true}
-    use {"hrsh7th/cmp-nvim-lsp", opt = true}
-    use {"hrsh7th/cmp-buffer", opt = true}
-    use {"hrsh7th/cmp-calc", opt = true}
-    use {"hrsh7th/cmp-vsnip", opt = true}
-    use {"hrsh7th/cmp-nvim-lua", opt = true}
-    -- Snippets
-    use {"hrsh7th/vim-vsnip", opt = true}
-    use {'hrsh7th/vim-vsnip-integ', opt = true}
-    use {"rafamadriz/friendly-snippets", opt = true}
+	-- Explorer
+	-------------------------------------------------------------------------------------------------------
+	use({ "kyazdani42/nvim-tree.lua" })
 
-    require_plugin("nvim-cmp")
-    require_plugin("cmp-nvim-lsp")
-    require_plugin("cmp-buffer")
-    require_plugin("cmp-calc")
-    require_plugin("cmp-vsnip")
-    require_plugin("cmp-nvim-lua")
-    require_plugin("vim-vsnip")
-    require_plugin("vim-vsnip-integ")
-    require_plugin("friendly-snippets")
+	-- Whichkey
+	-------------------------------------------------------------------------------------------------------
+	use({ "folke/which-key.nvim" })
 
-    -- Syntax
-    -------------------------------------------------------------------------------------------------------
-    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", opt = true}
-    use {"nvim-treesitter/nvim-treesitter-refactor", opt = true}
+	-- Comment
+	-------------------------------------------------------------------------------------------------------
+	use({ "terrortylor/nvim-comment" })
 
-    require_plugin("nvim-treesitter")
-    require_plugin("nvim-treesitter-refactor")
+	-- Floaterm
+	-------------------------------------------------------------------------------------------------------
+	use({ "voldikss/vim-floaterm" })
+	use({ "kevinhwang91/rnvimr" })
 
-    -- Explorer
-    -------------------------------------------------------------------------------------------------------
-    use {"kyazdani42/nvim-tree.lua", opt = true}
-    require_plugin("nvim-tree.lua")
+	-- Search + replace
+	-------------------------------------------------------------------------------------------------------
+	use({ "mg979/vim-visual-multi", branch = "master" })
+	use({ "blackCauldron7/surround.nvim" })
 
-    -- Whichkey
-    -------------------------------------------------------------------------------------------------------
-    use {"folke/which-key.nvim", opt = true}
-    require_plugin("which-key.nvim")
+	-- Color schemes + Icons
+	-------------------------------------------------------------------------------------------------------
+	use({ "christianchiarulli/nvcode-color-schemes.vim" })
+	use({ "norcalli/nvim-colorizer.lua" })
+	use({ "kyazdani42/nvim-web-devicons" })
 
-    -- Comment
-    -------------------------------------------------------------------------------------------------------
-    use {"terrortylor/nvim-comment", opt = true}
-    require_plugin("nvim-comment")
+	-- Status Line and Bufferline
+	-------------------------------------------------------------------------------------------------------
+	use({ "nvim-lualine/lualine.nvim" })
+	use({ "akinsho/nvim-bufferline.lua" })
+	use({ "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" })
 
-    -- Floaterm
-    -------------------------------------------------------------------------------------------------------
-    use {'voldikss/vim-floaterm', opt = true}
-    use {'kevinhwang91/rnvimr', opt = true}
+	-- Git
+	-------------------------------------------------------------------------------------------------------
+	use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	use({ "nvim-lua/plenary.nvim" })
 
-    require_plugin("vim-floaterm")
-    require_plugin("rnvimr")
+	-- Feature
+	-------------------------------------------------------------------------------------------------------
 
-    -- Search + replace
-    -------------------------------------------------------------------------------------------------------
-    use {'mg979/vim-visual-multi', opt = true, branch = 'master'}
-    use {"blackCauldron7/surround.nvim", opt = true}
+	-- Auto pairs
+	use({ "windwp/nvim-autopairs" })
+	use({ "windwp/nvim-ts-autotag" })
 
-    require_plugin("vim-visual-multi")
-    require_plugin("surround.nvim")
+	-- Insert escape
+	use({ "jdhao/better-escape.vim" })
 
-    -- Color schemes + Icons
-    -------------------------------------------------------------------------------------------------------
-    use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
-    use {'norcalli/nvim-colorizer.lua', opt = true}
-    use {"kyazdani42/nvim-web-devicons", opt = true}
+	-- Rainbow
+	use({ "p00f/nvim-ts-rainbow" })
 
-    require_plugin("nvcode-color-schemes.vim")
-    require_plugin("nvim-colorizer.lua")
-    require_plugin("nvim-web-devicons")
+	-- Dashboard
+	use({ "glepnir/dashboard-nvim" })
 
-    -- Status Line and Bufferline
-    -------------------------------------------------------------------------------------------------------
-    use {"glepnir/galaxyline.nvim", opt = true}
-    use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+	use({ "lukas-reineke/indent-blankline.nvim" })
 
-    require_plugin("galaxyline.nvim")
-    require_plugin("nvim-bufferline")
-
-    -- Git
-    -------------------------------------------------------------------------------------------------------
-    use {"lewis6991/gitsigns.nvim", opt = true, requires = {'nvim-lua/plenary.nvim'}}
-    use {"nvim-lua/plenary.nvim", opt = true}
-
-    require_plugin("gitsigns.nvim")
-    require_plugin("plenary.nvim")
-
-    -- Feature
-    -------------------------------------------------------------------------------------------------------
-
-    -- Auto pairs
-    use {'windwp/nvim-autopairs', opt = true}
-    use {"windwp/nvim-ts-autotag", opt = true}
-
-    require_plugin('nvim-autopairs')
-    require_plugin("nvim-ts-autotag")
-
-    -- Insert escape
-    use {'jdhao/better-escape.vim', opt = true}
-    require_plugin("better-escape.vim")
-
-    -- Rainbow
-    use {"p00f/nvim-ts-rainbow", opt = true}
-    require_plugin("nvim-ts-rainbow")
-
-    -- Dashboard
-    use {'glepnir/dashboard-nvim', opt = true}
-    require_plugin("dashboard-nvim")
-
-    use {"lukas-reineke/indent-blankline.nvim", opt = true}
-    require_plugin("indent-blankline.nvim")
-
-    -- Debugging
-    -- use {"mfussenegger/nvim-dap", opt = true}
-    --    require_plugin("nvim-dap")
-
-    -- use {'ms-jpq/coq_nvim', branch = 'coq', opt = true} -- main one
-    -- require_plugin("coq_nvim")
-    -- use {'ms-jpq/coq.artifacts', branch = 'artifacts', opt = true} -- 9000+ Snippets
-    -- require_plugin("coq.artifacts")
-
-    -- use {"nvim-treesitter/playground", opt = true}
-    --   require_plugin("playground")
-
-    -- use {'f-person/git-blame.nvim', opt = true}
-    --    require_plugin("git-blame")
-
-    -- use {"kevinhwang91/nvim-bqf", opt = true}
-    --    require_plugin("nvim-bqf")
-
-    -- Find and replace
-    -- use {'brooth/far.vim', opt = true}
-    --    require_plugin("far.nvim")
-
-    -- use {'mattn/emmet-vim', opt = true}
-    --    require_plugin("emmet-vim")
-
-    -- use {'junegunn/vim-easy-align', opt = true}
-    --    require_plugin("vim-easy-align")
-
-    -- use {'mfussenegger/nvim-jdtls', opt = true}
-    --    require_plugin("nvim-jdtls")
-
-    -- use {'mitsuhiko/vim-jinja', opt = true}
-    --    require_plugin("vim-jinja")
-
-    -- use {'norcalli/snippets.nvim', opt = true}
-    --    require_plugin("snippets.nvim")
-
+	use({ "alefpereira/pyenv-pyright" })
+	if PACKER_BOOTSTRAP then
+		require("packer").sync()
+	end
 end)
