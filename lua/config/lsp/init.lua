@@ -1,11 +1,8 @@
-require('config.lsp.lua-ls')
--- require('config.lsp.json-ls')
-require('config.lsp.pyright-ls')
-require('config.lsp.java-ls')
--- require('config.lsp.java-jdtls')
-require('config.lsp.tsserver-ls')
--- require('config.lsp.omnisharp-ls')
-require('config.lsp.bash-ls')
-require('config.lsp.css-ls')
-require('config.lsp.haskell-ls')
-require('config.lsp.efm-ls')
+local status_ok, _ = pcall(require, "lspconfig")
+if not status_ok then
+	return
+end
+
+require("config.lsp.lsp-installer")
+require("config.lsp.handlers").setup()
+require("config.lsp.null-ls")
